@@ -1,0 +1,231 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+  var app = angular.module('myApp', []);
+
+    app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
+     $scope.tabData = [
+      {
+        title: "Data Jabatan Target",
+        content: "https://ragilrojo1986.github.io/Monitoring_1.html"
+      },
+      {
+        title: "Rasio Talent",
+        content: "https://ragilrojo1986.github.io/Monitoring_2.html"
+      },
+      {
+        title: "Tab 3",
+        content: "https://ragilrojo1986.github.io/Monitoring_3.html"
+      }
+    ];
+     $scope.downloadExcel = function (item) {
+          // Mendapatkan tabel yang akan di-download
+          var table = document.getElementById(item);
+        
+          // Membuat objek workbook
+          var wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+        
+          // Mengkonversi workbook ke dalam format file excel
+          var excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+        
+          // Men-download file excel
+          saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
+        };
+    $scope.selectTab = function(index) {
+      $scope.selectedTabIndex = index;
+    };
+    // Indeks tab yang sedang ditampilkan
+    $scope.selectedTabIndex = 0;
+    $scope.Awal = true;
+    $scope.Form = false;
+    $scope.TampilTab =false;
+    
+    $scope.items = [
+        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu'},
+        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu'},
+        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu'}
+      ];
+
+     $scope.DataJabatanTargets = [
+        {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
+        {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
+        {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
+            {nomor: 4, namaJabatan: 'Direktur Tg', namaPejabat: '-', eselon1: 'DJP',eselon2: 'direktur adbasda', tmtPensiun: '-',  skj: 'tidak ditemukan', keterangan : 'Usulan Unit' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: 'Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan'}
+          ];
+
+    $scope.pilih = function(item) {
+      $scope.TampilTab = true;
+      $scope.Awal =false;
+      $scope.PeriodePemetaan = item.periode;
+    };
+    
+    $scope.BukaForm = function () {
+        //$scope.Form = true;
+        $scope.TampilTab = true;
+    };
+    $scope.BuatChart = function () {
+           var ctx = document.getElementById('myPieChart').getContext('2d');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+        
+    };
+    
+    $scope.tambah = function() {
+    $scope.Form = false; 
+    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
+    $scope.items.push($scope.item);
+    $scope.item = {}; // Kosongkan form input setelah data ditambahkan
+    
+  };
+
+  }]);
+  
+    
+
+</script>
+ <style>
+  .container {
+    width: 100%;
+    height: auto;
+    display: flex; /* mengubah elemen menjadi sejajar */
+  }
+ 
+  .left-menu {
+    width: 200px;
+    height: auto;
+    float: left;
+    background-color: blue; /* memberikan warna biru */
+  }
+
+
+  .left-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .left-menu li {
+    margin: 10px 0;
+  }
+
+   .left-menu a {
+    text-decoration: none;
+    color: #fff; /* memberikan warna putih pada teks */
+    font-size: 16px;
+  }
+   .content {
+    width: calc(100% - 200px); /* mengambil 100% lebar dikurangi lebar left-menu */
+    height: auto;
+    float: right;
+    padding: 1px;
+  }
+  
+.tabs {
+  display: flex;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  background-color: #ddd;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+</style>
+  </head>
+  
+  <div ng-app="myApp" ng-controller="indexController">
+  <div class="container">
+      <div class="left-menu">
+        <ul>
+          
+          <li><a href="/monitoring.html">Monitoring Manajemen Talenta</a></li>
+          <li><a href="/">Identifikasi Jabatan Target</a></li>
+          
+        </ul>
+        </div>
+      <div class="content">
+          <div>Monitoring MT</div>
+          
+        <div ng-show="Awal">
+            <table border="1">
+              <tr>
+                <th>No.</th>
+                <th>Periode Pemetaan</th>
+                <th>Aksi</th>
+              </tr>
+              <tr ng-repeat="item in items">
+                <td>{{item.no}}</td>
+                <td>{{item.periode}}</td>
+                <td><button ng-click="pilih(item)">pilih</button></td>
+              </tr>
+            </table>
+            
+        </div>
+        <div ng-show="TampilTab">
+         <div class="tabs">
+    <button ng-repeat="tab in tabData" ng-click="selectTab($index)" ng-class="{ 'active': $index == selectedTabIndex }">{{tab.title}}</button>
+  </div>
+            <div class="tab-content" ng-repeat="tab in tabData" ng-class="{ 'active': $index == selectedTabIndex }">
+    
+    <div ng-include="tab.content"></div>
+  </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</html>
