@@ -49,7 +49,7 @@
         {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu', JabatanCalonTalent: 'Jabatan Eselon III & setara'}
       ];
 
-     $scope.DataJabatanTargets = [
+    $scope.DataJabatanTargets = [
         {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
         {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
         {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
@@ -57,10 +57,10 @@
       ];
 
     $scope.pilih = function(item) {
-      $scope.TampilTab = true;
-      $scope.Awal =false;
-      $scope.PeriodePemetaan = item.periode;
-      $scope.JabatanCalonTalent = item.JabatanCalonTalent;
+        $scope.TampilTab = true;
+        $scope.Awal =false;
+        $scope.PeriodePemetaan = item.periode;
+        $scope.JabatanCalonTalent = item.JabatanCalonTalent;
     };
     
     $scope.BukaForm = function () {
@@ -113,7 +113,30 @@
     $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
     $scope.items.push($scope.item);
     $scope.item = {}; // Kosongkan form input setelah data ditambahkan
-    
+    $scope.Proses = function () {
+      $scope.rows = [
+                    {
+                      No: 1,
+                      Nama: 'John Doe',
+                      Jabatan: 'Kabag',
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: 'Sekretariat Jenderal',
+                      TMT_Pensiun: '01/01/2023',
+                      Keterangan: '-'
+                    },
+                    {
+                      No: 2,
+                      Nama: 'Oki',
+                      Jabatan: 'Kadiv',
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: 'DJBC',
+                      TMT_Pensiun: '01/01/2026',
+                      Keterangan: '-'
+                    }
+                ];
+    };
+
+
   };
 
   }]);
