@@ -172,6 +172,10 @@
               return;
             };
       console.log(dt);
+      if(dt[0]== null){
+        alert("data tidak bisa masuk karena data kompetensi tidak ditemukan, masukkan data kompetensi melalui HRIS!");
+
+      }
       alert("Nama/NIP: "+ dt[0].NamaLengkap + "/" + dt[0].NIPBaru + " akan dimasukkan ke calon talent");
       console.log("sudah masuk");
       var insert = {
