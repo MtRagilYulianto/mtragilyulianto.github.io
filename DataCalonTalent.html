@@ -25,14 +25,18 @@
   </div>
   <div ng-show="TampilForm">
     <form>
-        <label for="nip">NIP:</label><br>
-        <input type="text" id="nip" name="nip"><br>
-        <label for="nama">Nama:</label><br>
-        <input type="text" id="nama" name="nama"><br>
-        <label for="jabatan">Jabatan:</label><br>
-        <input type="text" id="jabatan" name="jabatan"><br>
-        <label for="nilai_kinerja">Nilai Kinerja:</label><br>
-        <input type="text" id="nilai_kinerja" name="nilai_kinerja"><br><br>
-        <input type="submit" value="Simpan">
-      </form> 
+        <div>
+          <label for="nip">NIP:</label>
+          <input ng-model="Peg.NIP" type="text" id="nip" name="nip">
+        </div>
+        <div>
+          <label for="jabatan">Jabatan:</label>
+          <input ng-model="Peg.jabatan" type="text" id="jabatan" name="jabatan">
+        </div>
+        <div>
+          <label for="nilai_kinerja">Nilai Kinerja:</label>
+          <input ng-model="Peg.NilaiKinerja" type="text" id="nilai_kinerja" name="nilai_kinerja">
+        </div>
+        <input type="submit" value="Simpan" ng-click="Tambahkan(Peg)">
+      </form>
   </div>
