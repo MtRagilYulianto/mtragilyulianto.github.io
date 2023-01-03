@@ -174,7 +174,7 @@
       console.log(dt);
       if(dt[0].NilaiKompetensi== null){
         alert("data tidak bisa masuk karena data kompetensi tidak ditemukan, masukkan data kompetensi melalui HRIS!");
-
+        return;
       }
       alert("Nama/NIP: "+ dt[0].NamaLengkap + "/" + dt[0].NIPBaru + " akan dimasukkan ke calon talent");
       console.log("sudah masuk");
