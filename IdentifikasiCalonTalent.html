@@ -10,17 +10,14 @@
     app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
      $scope.tabData = [
       {
-        title: "Data Jabatan Target",
-        content: "https://ragilrojo1986.github.io/Monitoring_1.html"
+        title: "Data Calon Talent",
+        content: "https://ragilrojo1986.github.io/DataCalonTalent.html"
       },
       {
-        title: "Rasio Talent",
-        content: "https://ragilrojo1986.github.io/Monitoring_2.html"
+        title: "Data Tambahan Calon Talent",
+        content: "https://ragilrojo1986.github.io/DataTambahanCalonTalent.html"
       },
-      {
-        title: "Tab 3",
-        content: "https://ragilrojo1986.github.io/Monitoring_3.html"
-      }
+
     ];
      $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
@@ -199,7 +196,7 @@
         </ul>
         </div>
       <div class="content">
-          <div>Monitoring MT</div>
+          <div>Identifikasi Calon Talent</div>
           
         <div ng-show="Awal">
             <table border="1">
