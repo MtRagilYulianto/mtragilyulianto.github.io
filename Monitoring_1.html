@@ -1,0 +1,56 @@
+<table id="TabelJabatanTarget" border="1">
+    <caption>Data Jabatan Target Periode Pemetaan : <br> {{PeriodePemetaan}}</caption>
+    <tr>
+      <th>Nomor</th>
+      <th>Nama Jabatan Target</th>
+      <th>Nama Pejabat Sekarang</th>
+      <th>Eselon I</th>
+      <th>Eselon II</th>
+      <th>TMT Pensiun</th>
+     
+      <th>SKJ</th>
+      <th>Keterangan</th>
+      <th>Persetujuan Admin MT</th> <!-- kolom baru -->
+      <th>Persetujuan Unit MT</th> <!-- kolom baru -->
+      <th>Status Penetapan</th> <!-- kolom baru -->
+    </tr>
+    <tr ng-repeat="item in DataJabatanTargets">
+      <td>{{item.nomor}}</td>
+      <td>{{item.namaJabatan}}</td>
+      <td>{{item.namaPejabat}}</td>
+      <td>{{item.eselon1}}</td>
+      <td>{{item.eselon2}}</td>
+      <td>{{item.tmtPensiun}}</td>
+  
+      <td>{{item.skj}}</td>
+      <td>{{item.keterangan}}
+      
+      </td>
+      <td>
+        <span ng-if="item.persetujuanAdminMT == 'V'">V</span>
+        <span ng-if="item.persetujuanAdminMT == '-'">-</span>
+       
+        <span ng-if="item.persetujuanAdminMT == 'X'">X</span>
+       
+      </td>
+      <td>
+        <span ng-if="item.persetujuanUnitMT == 'V'">V</span>
+       
+        <span ng-if="item.persetujuanUnitMT == 'X'">X</span>
+        
+        <span ng-if="item.persetujuanUnitMT == '-'">-</span>
+       
+       <td>
+        <span ng-if="item.statusPenetapan == '-'">-</span>
+        <span ng-if="item.statusPenetapan == 'V'">V</span>
+        
+        <span ng-if="item.statusPenetapan == 'X'">X</span>
+        
+        <span ng-if="item.skj == 'tidak ditemukan'">Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan</span>
+       
+      </td>
+    </tr>
+  </table>
+  <div>
+          <button ng-click="downloadExcel('TabelJabatanTarget')">Download Data</button>
+  </div>
