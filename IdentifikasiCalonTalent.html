@@ -42,17 +42,17 @@
     $scope.TampilTab =false;
     
     $scope.items = [
-        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu'},
-        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu'},
-        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu'}
+        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu', JabatanCalonTalent: 'Jabatan Eselon III & setara'},
+        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu', JabatanCalonTalent: 'Jabatan Eselon III & setara'},
+        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu', JabatanCalonTalent: 'Jabatan Eselon III & setara'}
       ];
 
      $scope.DataJabatanTargets = [
         {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
         {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
         {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
-            {nomor: 4, namaJabatan: 'Direktur Tg', namaPejabat: '-', eselon1: 'DJP',eselon2: 'direktur adbasda', tmtPensiun: '-',  skj: 'tidak ditemukan', keterangan : 'Usulan Unit' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: 'Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan'}
-          ];
+        {nomor: 4, namaJabatan: 'Direktur Tg', namaPejabat: '-', eselon1: 'DJP',eselon2: 'direktur adbasda', tmtPensiun: '-',  skj: 'tidak ditemukan', keterangan : 'Usulan Unit' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: 'Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan'}
+      ];
 
     $scope.pilih = function(item) {
       $scope.TampilTab = true;
@@ -199,15 +199,18 @@
           <div>Identifikasi Calon Talent</div>
           
         <div ng-show="Awal">
+
             <table border="1">
               <tr>
                 <th>No.</th>
                 <th>Periode Pemetaan</th>
+                <th>Jabatan Calon Talent</th>
                 <th>Aksi</th>
               </tr>
               <tr ng-repeat="item in items">
                 <td>{{item.no}}</td>
                 <td>{{item.periode}}</td>
+                <td>{{item.JabatanCalonTalent}}</td>
                 <td><button ng-click="pilih(item)">pilih</button></td>
               </tr>
             </table>
