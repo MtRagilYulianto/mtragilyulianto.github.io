@@ -1,4 +1,4 @@
-<table>
+<table border="1">
     <tr>
       <th>No.</th>
       <th>Nama</th>
@@ -8,23 +8,14 @@
       <th>TMT Pensiun</th>
       <th>Keterangan</th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>John Doe</td>
-      <td>Kabag</td>
-      <td>Eselon III & setara</td>
-      <td>Sekretariat Jenderal</td>
-      <td>01/01/2023</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Oki</td>
-      <td>Kadiv</td>
-      <td>Eselon III & setara</td>
-      <td>DJBC</td>
-      <td>01/01/2026</td>
-      <td>-</td>
+    <tr ng-repeat="row in rows">
+        <td>{{row.No}}</td>
+        <td>{{row.Nama}}</td>
+        <td>{{row.Jabatan}}</td>
+        <td>{{row.JenjangJabatan}}</td>
+        <td>{{row.EselonI}}</td>
+        <td>{{row.TMT_Pensiun}}</td>
+        <td>{{row.Keterangan}}</td>
     </tr>
   </table>
   
