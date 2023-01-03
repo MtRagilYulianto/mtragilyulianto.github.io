@@ -160,16 +160,21 @@
 
     $scope.Tambahkan = function (peg) {
       console.log("masuk tambahkan...");
-      var len = $scope.DataKandidat.filter(function(item) {
+      var dt = $scope.DataKandidat.filter(function(item) {
                       return item.NIPBaru == peg.NIP;
-                    }).length;
+                    });
       
-      if (len == 0 ){
-        alert("Data NIP Tidak ditemukan");
-        return;
-      };
+            if (dt.length == 0 ){
+              alert("Data NIP Tidak ditemukan");
+              return;
+            };
       
-      }
+      alert("Nama/NIP: "+ dt.NamaLengkap + "/" + dt.NIPBaru + " akan dimasukkan ke calon talent");
+      console.log("sudah masuk");
+
+
+
+    }
 
   }]);
   
