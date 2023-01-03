@@ -1,5 +1,138 @@
 <html>
-<body>
-  <h1>hello world</h1>
-  </body>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+  var app = angular.module('myApp', []);
+
+  app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
+    $scope.Awal = true;
+    $scope.Form = false;
+    
+     $scope.items = [
+        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu'},
+        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu'},
+        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu'}
+      ];
+
+$scope.pilih = function(item) {
+      $window.location.href = 'https://mockupmt.000webhostapp.com/IdentifikasiJabatan.html?PeriodePemetaan=' + item.periode;
+        // Tambahkan logika untuk menangani aksi pilih disini
+      };
+    
+$scope.BukaForm = function () {
+        $scope.Form = true;    
+    };
+    
+$scope.tambah = function() {
+    $scope.Form = false; 
+    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
+    $scope.items.push($scope.item);
+    $scope.item = {}; // Kosongkan form input setelah data ditambahkan
+  };
+  
+  $scope.tambahSimulasi = function() {
+    $scope.Form = false; 
+    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu--SIMULASI'};
+    $scope.items.push($scope.item);
+    $scope.item = {}; // Kosongkan form input setelah data ditambahkan
+  };
+
+  }]);
+</script>
+ <style>
+  .container {
+    width: 100%;
+    height: auto;
+    display: flex; /* mengubah elemen menjadi sejajar */
+  }
+ 
+  .left-menu {
+    width: 200px;
+    height: auto;
+    float: left;
+    background-color: blue; /* memberikan warna biru */
+  }
+
+
+  .left-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .left-menu li {
+    margin: 10px 0;
+  }
+
+   .left-menu a {
+    text-decoration: none;
+    color: #fff; /* memberikan warna putih pada teks */
+    font-size: 16px;
+  }
+   .content {
+    width: calc(100% - 200px); /* mengambil 100% lebar dikurangi lebar left-menu */
+    height: auto;
+    float: right;
+    padding: 1px;
+  }
+</style>
+  </head>
+  
+  <div ng-app="myApp" ng-controller="indexController">
+  <div class="container">
+      <div class="left-menu">
+        <ul>
+          
+          <li><a href="/monitoring.html">Monitoring Manajemen Talenta</a></li>
+          <li><a href="#">Identifikasi Jabatan Target</a></li>
+          
+        </ul>
+        </div>
+      <div class="content">
+            <div ng-show="Awal">
+            <table border="1">
+              <tr>
+                <th>No.</th>
+                <th>Periode Pemetaan</th>
+                <th>Aksi</th>
+              </tr>
+              <tr ng-repeat="item in items">
+                <td>{{item.no}}</td>
+                <td>{{item.periode}}</td>
+                <td><button ng-click="pilih(item)">pilih</button></td>
+              </tr>
+            </table>
+            <button ng-click="BukaForm()">Tambah Pemetaan</button>
+            </div>
+            <br>
+            <br>
+            <form ng-show="Form" >
+                <div>
+                  <label for="scope">Ruang Lingkup:</label>
+                  <select id="scope" name="scope">
+                    <option value="kementerian_keuangan">Kementerian Keuangan</option>
+                  </select>
+                </div>
+                <br>
+                <div>
+                  <label for="jenjang_jabatan">Jenjang Jabatan:</label>
+                  <select id="jenjang_jabatan" name="jenjang_jabatan">
+                    <option value="eselon_ii">Eselon II</option>
+                    
+                  </select>
+                </div>
+                <br>
+                
+                <br>
+                <div>
+                  <button ng-click="tambah()">Buat Periode Pemetaan</button>
+                </div>
+                <div>
+                  <button ng-click="tambahSimulasi()">Buat Periode Pemetaan (SIMULASI)</button>
+                </div>
+            </form>
+        </div>
+  </div>
+  </div>
 </html>
+
