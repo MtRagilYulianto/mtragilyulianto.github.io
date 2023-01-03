@@ -171,6 +171,21 @@
       console.log(dt);
       alert("Nama/NIP: "+ dt[0].NamaLengkap + "/" + dt[0].NIPBaru + " akan dimasukkan ke calon talent");
       console.log("sudah masuk");
+      var insert = {
+                      No: 3,
+                      Nama: dt[0].NamaLengkap,
+                      Jabatan: peg.jabatan,
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: dt[0].Esl1,
+                      TMT_Pensiun: dt[0].TmtPensiun,
+                      Keterangan: 'Data Tambahan'
+                   };
+      $scope.rows.push(insert);
+      insert = {};
+      $scope.TampilTabel = true;
+    
+      $scope.TampilForm = false;
+
     }
 
   }]);
