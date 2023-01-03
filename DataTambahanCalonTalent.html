@@ -1,0 +1,20 @@
+<table border="1">
+    <tr>
+      <th>No.</th>
+      <th>Nama</th>
+      <th>Jabatan</th>
+      <th>Jenjang Jabatan</th>
+      <th>Eselon I</th>
+      <th>TMT Pensiun</th>
+      <th>Keterangan</th>
+    </tr>
+    <tr ng-repeat="row in rows">
+        <td>{{row.No}}</td>
+        <td>{{row.Nama}}</td>
+        <td>{{row.Jabatan}}</td>
+        <td>{{row.JenjangJabatan}}</td>
+        <td>{{row.EselonI}}</td>
+        <td>{{row.TMT_Pensiun}}</td>
+        <td>{{row.Keterangan}}</td>
+    </tr>
+</table>
