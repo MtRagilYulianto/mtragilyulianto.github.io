@@ -1,0 +1,272 @@
+<html>
+     <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+   <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    <script>
+  var app = angular.module('myApp', []);
+
+  app.controller('identifikasiController', ['$scope', '$location', '$window', function($scope, $location, $window) {
+        
+        $scope.PeriodePemetaan = "";
+        
+        $scope.items = [
+        {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
+        {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
+        {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
+            {nomor: 4, namaJabatan: 'Direktur Tg', namaPejabat: '-', eselon1: 'DJP',eselon2: 'direktur adbasda', tmtPensiun: '-',  skj: 'tidak ditemukan', keterangan : 'Usulan Unit' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: 'Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan'}
+          ];
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const Jabatan = urlParams.get('Jabatan');
+
+        if (Jabatan == null){
+           console.log("Jabatan Kosong");  
+        } else {
+           console.log(Jabatan);
+        };
+        
+        const PerPemetaan = urlParams.get('PeriodePemetaan');
+
+        if (PerPemetaan == null){
+           $scope.PeriodePemetaan = "Periode Kosong";
+        } else {
+          $scope.PeriodePemetaan = PerPemetaan;
+        };
+        
+        $scope.viewTable = false;
+        
+        $scope.Buka = function () {
+                    $scope.viewTable = true;
+                };
+        
+        $scope.Tambahkan = function (item) {
+                    console.log(item);
+                    var row = item.currentTarget.parentNode.parentNode;
+                    row.parentNode.removeChild(row);
+                    $window.location.href = 'https://mockupmt.000webhostapp.com/IdentifikasiJabatan.html';
+        };
+        
+        $scope.reset = function(item, field) {
+            item[field] = '-';
+        };
+
+        $scope.setujui = function(item, field) {
+            item[field] = 'V';
+        };
+
+        $scope.tolak = function(item, field) {
+            item[field] = 'X';
+          };
+        
+        $scope.OpenModal = function () {
+            var modal = document.getElementById('uploadModal');
+            modal.style.display = "block";
+        };
+        
+        $scope.CloseModal = function () {
+            var modal = document.getElementById('uploadModal');
+            modal.style.display = "none";
+        };
+        
+        $scope.addRow = function () {
+            if (Jabatan !== null){
+                
+                $scope.item = {nomor: $scope.items[$scope.items.length - 1].nomor + 1, namaJabatan: Jabatan, namaPejabat: null, eselon1: null, tmtPensiun: null, eselon3: null, eselon4: null, skj: null, persetujuanAdminMT: null, persetujuanUnitMT: null, statusPenetapan: null}
+                $scope.items.push($scope.item);
+                $scope.item = {};
+                  
+                };
+            
+        };
+        
+        $scope.downloadExcel = function (item) {
+          // Mendapatkan tabel yang akan di-download
+          var table = document.getElementById(item);
+        
+          // Membuat objek workbook
+          var wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+        
+          // Mengkonversi workbook ke dalam format file excel
+          var excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+        
+          // Men-download file excel
+          saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
+        };
+
+}]);
+</script>
+    
+    <style>
+       /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation-name: fadeIn; /* Fade in the background */
+  animation-duration: 0.4s;
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 50%; /* Place the modal in the center of the page */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Full width */
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideIn {
+  from {transform: translate(-50%, -100%);}
+  to {transform: translate(-50%, -50%);}
+}
+
+
+    </style>
+  </head>
+  <div ng-app="myApp" ng-controller="identifikasiController">
+      
+      <!-- Modal untuk upload dokumen -->
+
+      
+      
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadModalLabel">Unggah Dokumen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form untuk mengisi nomor surat dan mengupload file -->
+        <form>
+          <div class="form-group">
+            <label for="nomorSurat">Nomor Surat</label>
+            <input type="text" class="form-control" id="nomorSurat" placeholder="Masukkan nomor surat">
+          </div>
+          <div class="form-group">
+            <label for="dokumen">Dokumen</label>
+            <input type="file" class="form-control-file" id="dokumen">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="CloseModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Unggah</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+      
+  <table id="TabelJabatanTarget" border="1">
+  <caption>Data Jabatan Target Periode Pemetaan : <br> {{PeriodePemetaan}}</caption>
+  <tr>
+    <th>Nomor</th>
+    <th>Nama Jabatan Target</th>
+    <th>Nama Pejabat Sekarang</th>
+    <th>Eselon I</th>
+    <th>Eselon II</th>
+    <th>TMT Pensiun</th>
+   
+    <th>SKJ</th>
+    <th>Keterangan</th>
+    <th>Persetujuan Admin MT</th> <!-- kolom baru -->
+    <th>Persetujuan Unit MT</th> <!-- kolom baru -->
+    <th>Status Penetapan</th> <!-- kolom baru -->
+  </tr>
+  <tr ng-repeat="item in items">
+    <td>{{item.nomor}}</td>
+    <td>{{item.namaJabatan}}</td>
+    <td>{{item.namaPejabat}}</td>
+    <td>{{item.eselon1}}</td>
+    <td>{{item.eselon2}}</td>
+    <td>{{item.tmtPensiun}}</td>
+
+    <td>{{item.skj}}</td>
+    <td>{{item.keterangan}}
+    <button ng-show="item.keterangan == 'Usulan Unit'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal" ng-click="OpenModal()">
+        Upload Dokumen
+    </button>
+    </td>
+    <td>
+      <span ng-if="item.persetujuanAdminMT == 'V'">V</span>
+      <span ng-if="item.persetujuanAdminMT == '-'">-</span>
+      <button ng-if="item.persetujuanAdminMT == 'V'" ng-click="reset(item, 'persetujuanAdminMT')">RESET</button>
+      <span ng-if="item.persetujuanAdminMT == 'X'">X</span>
+      <button ng-if="item.persetujuanAdminMT == 'X'" ng-click="reset(item, 'persetujuanAdminMT')">RESET</button>
+      <button ng-if="item.persetujuanAdminMT == '-'" ng-click="setujui(item, 'persetujuanAdminMT')">Setujui</button>
+      <button ng-if="item.persetujuanAdminMT == '-'" ng-click="tolak(item, 'persetujuanAdminMT')">Tolak</button>
+    </td>
+    <td>
+      <span ng-if="item.persetujuanUnitMT == 'V'">V</span>
+      <button ng-if="item.persetujuanUnitMT == 'V'" ng-click="reset(item, 'persetujuanUnitMT')">RESET</button>
+      <span ng-if="item.persetujuanUnitMT == 'X'">X</span>
+      <button ng-if="item.persetujuanUnitMT == 'X'" ng-click="reset(item, 'persetujuanUnitMT')">RESET</button>
+      <span ng-if="item.persetujuanUnitMT == '-'">-</span>
+      <button ng-if="item.persetujuanUnitMT == '-'" ng-click="setujui(item, 'persetujuanUnitMT')">Setujui</button>
+      <button ng-if="item.persetujuanUnitMT == '-'" ng-click="tolak(item, 'persetujuanUnitMT')">Tolak</button>
+     <td>
+      <span ng-if="item.statusPenetapan == '-'">-</span>
+      <span ng-if="item.statusPenetapan == 'V'">V</span>
+      <button ng-if="item.statusPenetapan == 'V'" ng-click="reset(item, 'statusPenetapan')">RESET</button>
+      <span ng-if="item.statusPenetapan == 'X'">X</span>
+      <button ng-if="item.statusPenetapan == 'X'" ng-click="reset(item, 'statusPenetapan')">RESET</button>
+      <span ng-if="item.skj == 'tidak ditemukan'">Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan</span>
+      <button ng-if="item.statusPenetapan == '-'" ng-click="setujui(item, 'statusPenetapan')">Setujui</button>
+      <button ng-if="item.statusPenetapan == '-'" ng-click="tolak(item, 'statusPenetapan')">Tolak</button>
+    </td>
+  </tr>
+</table>
+
+
+
+<div ng-init="addRow()">
+     <button onclick="window.location.href='FormCariJabatan.html'">Tambah Jabatan Target dari Referensi Jabatan</button>
+      
+       <button onclick="window.location.href='FormCariJabatanBebas.html'">Tambah Jabatan Target dari Refensi Jabatan (bebas)</button>
+       
+       <button onclick="window.location.href='FormJabatanKosong.html'">Tambah Jabatan Target dari Pejabat yang Kosong</button>
+       
+        <button ng-click="downloadExcel('TabelJabatanTarget')">Download Data</button>
+</div>
+</div>
+</html>
