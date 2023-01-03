@@ -58,6 +58,7 @@
       $scope.TampilTab = true;
       $scope.Awal =false;
       $scope.PeriodePemetaan = item.periode;
+      $scope.JabatanCalonTalent = item.JabatanCalonTalent;
     };
     
     $scope.BukaForm = function () {
@@ -217,7 +218,8 @@
             
         </div>
         <div ng-show="TampilTab">
-         <div class="tabs">
+         dari jabatan calon talent : {{JabatanCalonTalent}}
+          <div class="tabs">
     <button ng-repeat="tab in tabData" ng-click="selectTab($index)" ng-class="{ 'active': $index == selectedTabIndex }">{{tab.title}}</button>
   </div>
             <div class="tab-content" ng-repeat="tab in tabData" ng-class="{ 'active': $index == selectedTabIndex }">
