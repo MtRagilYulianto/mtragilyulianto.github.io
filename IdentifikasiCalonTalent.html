@@ -8,7 +8,7 @@
   var app = angular.module('myApp', []);
 
     app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
-     $scope.tabData = [
+    $scope.tabData = [
       {
         title: "Data Calon Talent",
         content: "https://ragilrojo1986.github.io/DataCalonTalent.html"
@@ -19,7 +19,8 @@
       },
 
     ];
-     $scope.downloadExcel = function (item) {
+    
+    $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
           var table = document.getElementById(item);
         
@@ -32,6 +33,7 @@
           // Men-download file excel
           saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
         };
+    
     $scope.selectTab = function(index) {
       $scope.selectedTabIndex = index;
     };
@@ -67,6 +69,7 @@
         //$scope.Form = true;
         $scope.TampilTab = true;
     };
+    
     $scope.BuatChart = function () {
            var ctx = document.getElementById('myPieChart').getContext('2d');
     var myPieChart = new Chart(ctx, {
@@ -115,6 +118,7 @@
                     $scope.item = {}; // Kosongkan form input setelah data ditambahkan
                     
                   };
+    
     $scope.Proses = function () {
       console.log("masuks");
       $scope.rows = [
