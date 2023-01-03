@@ -159,6 +159,7 @@
     };
 
     $scope.Tambahkan = function (peg) {
+      console.log("masuk tambahkan...");
       var len = $scope.DataKandidat.filter(function(item) {
                       return item.NIPBaru == peg.NIP;
                     }).length;
