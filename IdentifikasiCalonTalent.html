@@ -42,7 +42,11 @@
     $scope.Awal = true;
     $scope.Form = false;
     $scope.TampilTab =false;
+
+    $scope.TampilTabel = true;
     
+    $scope.TampilForm = false;
+
     $scope.rows = [];
 
     $scope.items = [
@@ -141,6 +145,13 @@
                       Keterangan: '-'
                     }
                 ];
+    };
+
+    $scope.TambahForm = function () {
+      $scope.TampilTabel = false;
+    
+      $scope.TampilForm = true;
+
     };
 
   }]);

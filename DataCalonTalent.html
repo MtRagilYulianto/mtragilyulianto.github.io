@@ -1,4 +1,5 @@
-<table border="1">
+  <div ng-show="TampilTabel">
+  <table border="1">
     <tr>
       <th>No.</th>
       <th>Nama</th>
@@ -20,3 +21,18 @@
   </table>
   <br>
   <button ng-click="Proses()">Proses</button>
+  <button ng-click="TambahForm()">Tambah Calon</button>
+  </div>
+  <div ng-show="TampilForm">
+    <form>
+        <label for="nip">NIP:</label><br>
+        <input type="text" id="nip" name="nip"><br>
+        <label for="nama">Nama:</label><br>
+        <input type="text" id="nama" name="nama"><br>
+        <label for="jabatan">Jabatan:</label><br>
+        <input type="text" id="jabatan" name="jabatan"><br>
+        <label for="nilai_kinerja">Nilai Kinerja:</label><br>
+        <input type="text" id="nilai_kinerja" name="nilai_kinerja"><br><br>
+        <input type="submit" value="Simpan">
+      </form> 
+  </div>
