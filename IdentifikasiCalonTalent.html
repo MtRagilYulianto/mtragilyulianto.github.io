@@ -109,10 +109,12 @@
     };
     
     $scope.tambah = function() {
-    $scope.Form = false; 
-    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
-    $scope.items.push($scope.item);
-    $scope.item = {}; // Kosongkan form input setelah data ditambahkan
+                    $scope.Form = false; 
+                    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
+                    $scope.items.push($scope.item);
+                    $scope.item = {}; // Kosongkan form input setelah data ditambahkan
+                    
+                  };
     $scope.Proses = function () {
       console.log("masuks");
       $scope.rows = [
@@ -136,9 +138,6 @@
                     }
                 ];
     };
-
-
-  };
 
   }]);
   
