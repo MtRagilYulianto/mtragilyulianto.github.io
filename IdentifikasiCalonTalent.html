@@ -281,7 +281,7 @@
                       Keterangan: 'Data Tambahan'
                    };
       $scope.rows.push(insert);
-      $scope.$apply();
+      $scope.$evalAsync(function() {}); 
       insert = {};
       const buttons = document.querySelectorAll('.tabs button');
       const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');      
