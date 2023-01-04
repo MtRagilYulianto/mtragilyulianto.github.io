@@ -286,7 +286,11 @@
       //targetButton.click();
       $scope.cadangan = angular.copy($scope.rowsUsulanTambahan);
       $scope.rowsUsulanTambahan = [];
-      $scope.rowsUsulanTambahan = $scope.cadangan;
+      $timeout(function() {
+  // kode yang akan dijalankan setelah 2 detik
+            $scope.rowsUsulanTambahan = $scope.cadangan;
+      }, 2000);
+     
 
     };
 
