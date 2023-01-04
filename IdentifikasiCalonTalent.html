@@ -209,6 +209,7 @@
                 ];
 
     $scope.CekData = function (item) {
+      console.log('cek-');
       var nipArray = $scope.rows.map(row => row.NIP);
       if (nipArray.includes(item.NIP)) {
        return true;
