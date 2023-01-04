@@ -15,8 +15,8 @@
         <td>{{row.JenjangJabatan}}</td>
         <td>{{row.EselonI}}</td>
         <td>{{row.TMT_Pensiun}}</td>
-        <td>{{row.Keterangan}}
-          <div ng-if="row.Keterangan === 'Belum Masuk Calon Talent'">
+        <td>{{CekData(row)}}
+          <div ng-if="false">
             <br class="minimal">
             <button ng-click="AddCalonTalent(row)">Masukkan ke Calon Talent</button>
           </div>
