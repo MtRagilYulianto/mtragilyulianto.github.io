@@ -16,7 +16,7 @@
         <td>{{row.EselonI}}</td>
         <td>{{row.TMT_Pensiun}}</td>
         <td>{{CekData(row)?'Sudah Masuk Calon Talent':'Belum Masuk Calon Talent'}}
-          <div ng-if="!CekData(row)">
+          <div ng-if="CekData(row)">
             <br class="minimal">
             <button ng-click="AddCalonTalent(row)">Masukkan ke Calon Talent</button>
           </div>
