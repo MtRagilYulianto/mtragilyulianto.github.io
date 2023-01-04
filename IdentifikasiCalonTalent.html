@@ -281,18 +281,19 @@
                       Keterangan: 'Data Tambahan'
                    };
       $scope.rows.push(insert);
+      $scope.$apply();
       insert = {};
       const buttons = document.querySelectorAll('.tabs button');
       const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');      
-      //targetButton.click();
-      $scope.cadangan = angular.copy($scope.rowsUsulanTambahan);
-      $scope.rowsUsulanTambahan = [];
-      $timeout(function() {
+      targetButton.click();
+      //$scope.cadangan = angular.copy($scope.rowsUsulanTambahan);
+      //$scope.rowsUsulanTambahan = [];
+      //$timeout(function() {
   // kode yang akan dijalankan setelah 2 detik
-            $scope.rowsUsulanTambahan = $scope.cadangan;
-      }, 2000);
-      console.log($scope.rows);
-      console.log($scope.rowsUsulanTambahan);
+      //      $scope.rowsUsulanTambahan = $scope.cadangan;
+      //}, 2000);
+      //console.log($scope.rows);
+      //console.log($scope.rowsUsulanTambahan);
 
     };
 
