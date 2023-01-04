@@ -226,6 +226,20 @@
 
     }
 
+    $scope.AddCalonTalent = function (tamb) {
+      let maxNo = Math.max(...$scope.rows.filter(row => row.No).map(row => row.No));
+      var insert = {
+                      No: maxNo + 1,
+                      Nama: tamb.Nama,
+                      Jabatan: tamb.Jabatan,
+                      JenjangJabatan: tamb.JenjangJabatan,
+                      EselonI: tamb.EselonI,
+                      TMT_Pensiun: tamb.TMT_Pensiun,
+                      Keterangan: 'Data Tambahan'
+                   };
+    };
+
+
   }]);
   
     
