@@ -10,7 +10,7 @@
     <script>
   var app = angular.module('myApp', []);
 
-    app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
+    app.controller('indexController',  ['$scope', '$window', '$timeout', function($scope, $window, $timeout) {
     $scope.tabData = [
       {
         title: "Data Calon Talent",
@@ -262,7 +262,7 @@
       $scope.rowsUsulanTambahan.push(insert);
       insert = {};
       $scope.TampilTabel = true;
-    
+      
       $scope.TampilForm = false;
       
 
@@ -285,7 +285,11 @@
       const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');      
       //targetButton.click();
       $scope.reload = false;
-      $scope.reload = true;
+      $timeout(function() {
+  // kode yang akan dijalankan setelah 2 detik
+          $scope.reload = true;
+      }, 2000);
+      //$scope.reload = true;
 
     };
 
