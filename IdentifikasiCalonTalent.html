@@ -242,8 +242,16 @@
                    };
       $scope.rows.push(insert);
       insert = {};
+      // Ambil semua elemen button di dalam elemen dengan kelas "tabs"
+      const buttons = document.querySelectorAll('.tabs button');
+
+// Cari tombol yang menampilkan "Data Calon Talent"
+      const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');
+      
+      targetButton.click();
+
       //$('button:contains("Data Calon Talent")').click();
-      console.log($('button'));
+      //console.log($('button'));
       //$scope.TampilTabel = true;
     
       //$scope.TampilForm = false;
