@@ -261,11 +261,10 @@
                    };
       $scope.rowsUsulanTambahan.push(insert);
       insert = {};
-      //$scope.TampilTabel = true;
+      $scope.TampilTabel = true;
     
-      //$scope.TampilForm = false;
-      $scope.reload = false;
-      $scope.reload = true;
+      $scope.TampilForm = false;
+      
 
     }
 
@@ -285,6 +284,8 @@
       const buttons = document.querySelectorAll('.tabs button');
       const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');      
       targetButton.click();
+      $scope.reload = false;
+      $scope.reload = true;
 
     };
 
