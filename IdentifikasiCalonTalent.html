@@ -284,12 +284,9 @@
       const buttons = document.querySelectorAll('.tabs button');
       const targetButton = Array.from(buttons).find(button => button.textContent === 'Data Calon Talent');      
       //targetButton.click();
-      $scope.reload = false;
-      $timeout(function() {
-  // kode yang akan dijalankan setelah 2 detik
-          $scope.reload = true;
-      }, 2000);
-      //$scope.reload = true;
+      $scope.cadangan = angular.copy($scope.rowsUsulanTambahan);
+      $scope.rowsUsulanTambahan = [];
+      $scope.rowsUsulanTambahan = $scope.cadangan;
 
     };
 
