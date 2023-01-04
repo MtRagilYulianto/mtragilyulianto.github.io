@@ -15,7 +15,12 @@
         <td>{{row.JenjangJabatan}}</td>
         <td>{{row.EselonI}}</td>
         <td>{{row.TMT_Pensiun}}</td>
-        <td>{{row.Keterangan}}</td>
+        <td>{{row.Keterangan}} 
+          <div ng-if="row.Keterangan === 'Belum Masuk Calon Talent'">
+            <br>
+            <button>Masukkan ke Calon Talent</button>
+          </div>
+        </td>
     </tr>
 </table>
 <br>
