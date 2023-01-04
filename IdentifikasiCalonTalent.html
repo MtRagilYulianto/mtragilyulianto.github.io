@@ -47,7 +47,12 @@
 
     $scope.DataKandidat.filter(function(item) {
                       return item.NIPBaru == '198607242007011001';
-                    })[0].NilaiKompetensi = null;
+                    })[0].NilaiKompetensi = null; //198510032007011001
+    $scope.DataKandidat.filter(function(item) {
+                      return item.NIPBaru == '198510032007011001';
+                    })[0].NilaiKompetensi = 100;
+                    
+
 
     $scope.Peg = {};
 
