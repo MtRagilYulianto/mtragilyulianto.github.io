@@ -231,7 +231,7 @@
     $scope.addAll = function () {
       const buttons = document.querySelectorAll('button');
       const targetButton = Array.from(buttons).filter(button => button.textContent === 'Masukkan ke Calon Talent');      
-      //targetButton.click();
+      console.log(targetButton);
       for (let i = 0; i < targetButton.length; i++) {
         targetButton[i].click();
       }
