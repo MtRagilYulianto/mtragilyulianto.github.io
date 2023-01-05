@@ -9,9 +9,9 @@
     $scope.Form = false;
     
      $scope.items = [
-        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu'},
-        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu'},
-        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu'}
+        {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara'},
+        {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara' },
+        {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara' }
       ];
 
 $scope.pilih = function(item) {
@@ -25,14 +25,14 @@ $scope.BukaForm = function () {
     
 $scope.tambah = function() {
     $scope.Form = false; 
-    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu'};
+    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu', JenjangTalent:'Eselon III dan Jabatan Setara'};
     $scope.items.push($scope.item);
     $scope.item = {}; // Kosongkan form input setelah data ditambahkan
   };
   
   $scope.tambahSimulasi = function() {
     $scope.Form = false; 
-    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu--SIMULASI'};
+    $scope.item = {no: $scope.items[$scope.items.length - 1].no + 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2027--Kemenkeu--SIMULASI', JenjangTalent:'Eselon III dan Jabatan Setara'};
     $scope.items.push($scope.item);
     $scope.item = {}; // Kosongkan form input setelah data ditambahkan
   };
@@ -116,19 +116,22 @@ $scope.tambah = function() {
                 </div>
                 <br>
                 <div>
-                  <label for="jenjang_jabatan">Jenjang Jabatan:</label>
+                  <label for="jenjang_jabatan">Jenjang Jabatan Target:</label>
                   <select id="jenjang_jabatan" name="jenjang_jabatan">
-                    <option value="eselon_ii">Eselon II</option>
-                    
+                    <option value="eselon_ii">Eselon II</option>                    
                   </select>
                 </div>
                 <br>
-                
+                <div>
+                  <label for="jenjang_jabatan_Talent">Jenjang Jabatan Target:</label>
+                  <select id="jenjang_jabatan_Talent" name="jenjang_jabatan_Talent">
+                    <option value="eselon_iii">Eselon III dan Setara</option>                    
+                  </select>
+                </div>
                 <br>
                 <div>
                   <button ng-click="tambah()">Buat Periode Pemetaan</button>
-                </div>
-                <div>
+                
                   <button ng-click="tambahSimulasi()">Buat Periode Pemetaan (SIMULASI)</button>
                 </div>
             </form>
