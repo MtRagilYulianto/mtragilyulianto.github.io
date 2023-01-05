@@ -145,6 +145,7 @@
     
     $scope.Proses = function () {
       console.log("masuks");
+      
       $scope.rows = [
                     {
                       No: 1,
@@ -310,6 +311,11 @@
 
     };
 
+    $scope.ReduceCalonTalent = function (item) {
+      $scope.rows = $scope.rows.filter(function(row) {
+          return row.NIP !== item.NIP;
+      });
+    }
 
   }]);
   
