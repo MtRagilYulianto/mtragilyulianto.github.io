@@ -7,7 +7,7 @@
   app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
     $scope.Awal = true;
     $scope.Form = false;
-    
+    $scope.LeftMenu = 'https://ragilrojo1986.github.io/LeftMenu.html';
      $scope.items = [
         {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara'},
         {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara' },
@@ -88,7 +88,7 @@ $scope.tambah = function() {
   
   <div ng-app="myApp" ng-controller="indexController">
   <div class="container">
-      <div ng-include="https://ragilrojo1986.github.io/LeftMenu.html"></div>
+      <div ng-include="LeftMenu"></div>
 
       <div class="content">
             <div ng-show="Awal">
