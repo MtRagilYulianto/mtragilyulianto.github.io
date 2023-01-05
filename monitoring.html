@@ -71,12 +71,12 @@
     $scope.CariRasioKelamin = function () {
       // Menggunakan fungsi filter untuk mencari data dengan KodeKelamin 'L'
           var lakiLaki = $scope.DataTalent.filter(function(data) {
-            return data.KodeKelamin === 'L';
+            return data.KodeKelamin === 'P';
           });
           
           // Menggunakan fungsi filter untuk mencari data dengan KodeKelamin 'P'
           var perempuan = $scope.DataTalent.filter(function(data) {
-            return data.KodeKelamin === 'P';
+            return data.KodeKelamin === 'W';
           });
           
           google.charts.load('current', {'packages':['corechart']});
@@ -89,8 +89,8 @@
             // Buat data yang akan digunakan dalam pie chart
             var data = google.visualization.arrayToDataTable([
               ['Gender', 'Jumlah'],
-              ['Laki-Laki', lakiLaki.length],
-              ['Perempuan', perempuan.length]
+              ['Pria', lakiLaki.length],
+              ['Wanita', perempuan.length]
             ]);
 
             var options = {'title':'Gender', 'width':400, 'height':300};
