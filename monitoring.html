@@ -131,7 +131,7 @@
         }
 
         console.log(data);
-        console.log(typeof data);
+        console.log(Array.isArray(data));
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
