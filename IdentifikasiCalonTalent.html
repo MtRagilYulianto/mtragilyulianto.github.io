@@ -428,7 +428,9 @@
           ng-class="{ 'active': $index == selectedTabIndex }">{{tab.title}}</button>
         </div>
           <div class="tab-content" ng-repeat="tab in tabData" ng-class="{ 'active': $index == selectedTabIndex }">    
+            <div ng-if="$index == selectedTabIndex">  
               <div ng-include="tab.content"></div>
+            </div>
           </div>
       </div>
     </div>
