@@ -283,6 +283,15 @@
       }
     };
 
+    $scope.addAllKandidat = function () {
+      const buttons = document.querySelectorAll('button');
+      const targetButton = Array.from(buttons).filter(button => button.textContent === 'Masukkan ke Data Tambahan');      
+      console.log(targetButton);
+      for (let i = 0; i < targetButton.length; i++) {
+        targetButton[i].click();
+      }
+    };
+
     $scope.Tambahkan = function (peg) {
       console.log("masuk tambahkan...");
       var dt = $scope.DataKandidat.filter(function(item) {
