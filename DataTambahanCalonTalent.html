@@ -8,13 +8,13 @@
       <th>TMT Pensiun</th>
       <th>Keterangan</th>
     </tr>
-    <tr ng-init="row.Keterangan = CekData(row);" ng-repeat="row in rowsUsulanTambahan">
+    <tr  ng-repeat="row in rowsUsulanTambahan">
         <td>{{row.No}}</td>
         <td>{{row.Nama}}</td>
         <td>{{row.Jabatan}}</td>
         <td>{{row.JenjangJabatan}}</td>
         <td>{{row.EselonI}}</td>
-        <td>{{row.TMT_Pensiun}}</td>
+        <td ng-init="row.Keterangan = CekData(row)">{{row.TMT_Pensiun}}</td>
         <td>{{row.Keterangan}}
           <div ng-if="!CekData(row)">
             <br class="minimal">
