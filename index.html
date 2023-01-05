@@ -95,11 +95,13 @@ $scope.tambah = function() {
               <tr>
                 <th>No.</th>
                 <th>Periode Pemetaan</th>
+                <th>Jenjang Jabatan Talent</th>
                 <th>Aksi</th>
               </tr>
               <tr ng-repeat="item in items">
                 <td>{{item.no}}</td>
                 <td>{{item.periode}}</td>
+                <td>{{item.JenjangTalent}}</td>
                 <td><button ng-click="pilih(item)">pilih</button></td>
               </tr>
             </table>
