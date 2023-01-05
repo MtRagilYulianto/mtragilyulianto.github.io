@@ -88,20 +88,8 @@ $scope.tambah = function() {
   
   <div ng-app="myApp" ng-controller="indexController">
   <div class="container">
-      <div class="left-menu">
-        <ul>
-          <li class="menu-item"><a href="/monitoring.html">Monitoring Manajemen Talenta</a></li>
-          <li class="menu-item" onmouseover="this.querySelector('.sub-menu').style.display = 'block'" onmouseout="this.querySelector('.sub-menu').style.display = 'none'">
-            <a>Analisis Kebutuhan Talent</a>
-            <ul class="sub-menu">
-              <li><a href="/">Identifikasi Jabatan Target>></a></li>
-              <li><a href="/IdentifikasiCalonTalent.html">Identifikasi Calon Talent>></a></li>
-              
-              <!-- masukkan sub menu lainnya di sini -->
-            </ul>
-          </li>
-        </ul>
-        </div>
+      <div ng-include="https://ragilrojo1986.github.io/LeftMenu.html"></div>
+
       <div class="content">
             <div ng-show="Awal">
             <table border="1">
