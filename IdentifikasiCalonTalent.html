@@ -26,7 +26,7 @@
       },
 
     ];
-    
+    $scope.LeftMenu = 'https://ragilrojo1986.github.io/LeftMenu.html';
     $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
           var table = document.getElementById(item);
@@ -480,14 +480,8 @@
   
   <div ng-app="myApp" ng-controller="indexController">
   <div class="container">
-      <div class="left-menu">
-        <ul>
-          
-          <li><a href="/monitoring.html">Monitoring Manajemen Talenta</a></li>
-          <li><a href="/">Identifikasi Jabatan Target</a></li>
-          
-        </ul>
-        </div>
+      <div ng-include="LeftMenu"></div>
+
       <div class="content">
           <div>Identifikasi Calon Talent</div>
           
