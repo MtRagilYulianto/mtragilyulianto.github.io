@@ -16,7 +16,12 @@
         <td>{{ro.JenjangJabatan}}</td>
         <td>{{ro.EselonI}}</td>
         <td>{{ro.TMT_Pensiun}}</td>
-        <td>{{ro.Keterangan}}</td>
+        <td>{{ro.Keterangan}}
+          <div ng-if="ro.Keterangan == 'Data Tambahan'">
+            <br class="minimal">
+            <button ng-click="ReduceCalonTalent(ro)">Keluarkan dari Calon Talent</button>
+          </div>
+        </td>
     </tr>
   </table>
   <br>
