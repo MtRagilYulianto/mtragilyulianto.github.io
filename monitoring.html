@@ -121,7 +121,7 @@
           countEsl1[esl1List[i]]++;
         }
 
-        console.log(countEsl1);
+        //console.log(countEsl1);
 
         var data = [['Esl1', 'Jumlah']];
 
@@ -129,6 +129,8 @@
         for (var key in countEsl1) {
           data.push([key, countEsl1[key]]);
         }
+
+        console.log(data);
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
