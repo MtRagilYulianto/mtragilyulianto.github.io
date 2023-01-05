@@ -122,6 +122,39 @@
         }
 
         console.log(countEsl1);
+
+        var data = [['Esl1', 'Jumlah']];
+
+// Mengubah data jml menjadi format yang dibutuhkan
+        for (var key in countEsl1) {
+          data.push([key, countEsl1[key]]);
+        }
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+        // Fungsi untuk menampilkan pie chart
+        function drawChart() {
+          // Membuat data array untuk pie chart
+          var data = google.visualization.arrayToDataTable(data);
+          
+          // Mengatur option untuk pie chart
+          var options = {
+            title: 'Jumlah Esl1',
+            legend: {position: 'right'},
+            width: 600,
+            height: 400
+          };
+          
+          // Membuat dan menampilkan pie chart
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+
+
+
+
+
     };
 
     $scope.BukaForm = function () {
