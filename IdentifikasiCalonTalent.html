@@ -227,8 +227,10 @@
     $scope.addAll = function () {
       const buttons = document.querySelectorAll('button');
       const targetButton = Array.from(buttons).filter(button => button.textContent === 'Masukkan ke Calon Talent');      
-      //console.log(targetButton);
-      targetButton.click();
+      //targetButton.click();
+      for (let i = 0; i < targetButtons.length; i++) {
+        targetButtons[i].click();
+      }
     };
 
     $scope.Tambahkan = function (peg) {
