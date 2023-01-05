@@ -1,5 +1,27 @@
 <div ng-init="BuatChart()">
     Rasio Talent
 <br>
-<canvas id="myPieChart"></canvas>
+<label for="rasio-berdasarkan">Rasio Berdasarkan:</label>
+<select ng-model="Kriteria" id="rasio-berdasarkan">
+  <option value="jenis-kelamin">Jenis Kelamin</option>
+  <option value="eselon-1">Eselon I</option>
+  <option value="pendidikan">Pendidikan</option>
+  <option value="usia">Usia</option>
+</select>
+<div ng-if="Kriteria === 'jenis-kelamin'">
+    <p>Rasio Berdasarkan Jenis Kelamin</p>
+    <canvas id="myPieChart"></canvas>
+</div>
+<div ng-if="Kriteria === 'eselon-1'" >
+    <p>Rasio Berdasarkan Eselon I</p>
+    <canvas id="myPieChart"></canvas>
+</div>
+<div ng-if="Kriteria === 'pendidikan'">
+    <p>Rasio Berdasarkan Pendidikan</p>
+    <canvas id="myPieChart"></canvas>
+</div>
+<div ng-if="Kriteria === 'usia'">
+    <p>Rasio Berdasarkan Usia</p>
+    <canvas id="myPieChart"></canvas>
+</div>
 </div>
