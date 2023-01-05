@@ -139,7 +139,15 @@
         // Fungsi untuk menampilkan pie chart
         function drawChart() {
           // Membuat data array untuk pie chart
-          var data = google.visualization.arrayToDataTable(data);
+          var data = google.visualization.arrayToDataTable([
+            ['Esl1', 'Jumlah'],
+				['Direktorat Jenderal Perbendaharaan', 4],
+				['Inspektorat Jenderal', 3],
+				['Badan Kebijakan Fiskal', 2],
+				['Direktorat Jenderal Kekayaan Negara', 1],
+				['Badan Pendidikan dan Pelatihan Keuangan', 1]
+        ]
+          );
           
           // Mengatur option untuk pie chart
           var options = {
