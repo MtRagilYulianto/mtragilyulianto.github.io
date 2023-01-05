@@ -421,15 +421,16 @@
             
         </div>
         <div ng-show="TampilTab">
+         {{selectedTabIndex}}
          dari jabatan calon talent : {{JabatanCalonTalent}}
           <div class="tabs">
-    <button ng-repeat="tab in tabData" ng-click="selectTab($index)" ng-class="{ 'active': $index == selectedTabIndex }">{{tab.title}}</button>
-  </div>
-            <div class="tab-content" ng-repeat="tab in tabData" ng-class="{ 'active': $index == selectedTabIndex }">
-    
-    <div ng-include="tab.content"></div>
-  </div>
+          <button ng-repeat="tab in tabData" ng-click="selectTab($index)" 
+          ng-class="{ 'active': $index == selectedTabIndex }">{{tab.title}}</button>
         </div>
+          <div class="tab-content" ng-repeat="tab in tabData" ng-class="{ 'active': $index == selectedTabIndex }">    
+              <div ng-include="tab.content"></div>
+          </div>
+      </div>
     </div>
   </div>
   </div>
