@@ -213,10 +213,55 @@
                     }
                 ];
 
+    $scope.rowsKandidat = [
+                    {
+                      No: 1,
+                      Nama: 'Doni',
+                      NIP: '6',
+                      Jabatan: 'Ketua PBB',
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: 'Sekretariat Jenderal',
+                      TMT_Pensiun: '01/01/2023',
+                     // Keterangan: 'Sudah Masuk Calon Talent'
+                    },
+                    {
+                      No: 2,
+                      Nama: 'Dona',
+                      NIP: '7',
+                      Jabatan: 'Deputi Bank Dunia',
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: 'DJBC',
+                      TMT_Pensiun: '01/01/2026',
+                     // Keterangan: 'Belum Masuk Calon Talent'
+                    },
+                    {
+                      No: 3,
+                      Nama: 'Alam',
+                      NIP: '8',
+                      Jabatan: 'Kepala PSSI',
+                      JenjangJabatan: 'Eselon III & setara',
+                      EselonI: 'DJP',
+                      TMT_Pensiun: '01/01/2027',
+                     // Keterangan: 'Belum Masuk Calon Talent'
+                    }
+                ];
+
+
+
     $scope.CekData = function (item) {
       console.log('cek-');
       $scope.nipArray = $scope.rows.map(row => row.NIP);
       if ($scope.nipArray.includes(item.NIP)) {
+       return true;
+      } else {
+       return false;
+      }
+    };
+
+    $scope.CekDataKandidat = function (item) {
+      console.log('cek-');
+      $scope.nipArray2 = $scope.rowsUsulanTambahan.map(row => row.NIP);
+      if ($scope.nipArray2.includes(item.NIP)) {
        return true;
       } else {
        return false;
@@ -309,6 +354,25 @@
       
       
 
+    };
+
+    $scope.AddDataTambahan = function (tamb) {
+      let maxNo = Math.max(...$scope.rowsUsulanTambahan.filter(row => row.No).map(row => row.No));
+      var insert = {
+                      No: maxNo + 1,
+                      Nama: tamb.Nama,
+                      NIP: tamb.NIP,
+                      Jabatan: tamb.Jabatan,
+                      JenjangJabatan: tamb.JenjangJabatan,
+                      EselonI: tamb.EselonI,
+                      TMT_Pensiun: tamb.TMT_Pensiun,
+                      Keterangan: 'Data Tambahan'
+                   };
+      $scope.rowsUsulanTambahan.push(insert);
+      $scope.$apply;
+      $scope.$evalAsync(function() {}); 
+      insert = {};
+      
     };
 
     $scope.ReduceCalonTalent = function (item) {
