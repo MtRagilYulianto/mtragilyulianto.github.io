@@ -140,12 +140,7 @@
         function drawChart() {
           // Membuat data array untuk pie chart
           var datav = google.visualization.arrayToDataTable(
-           // ['Esl1', 'Jumlah'],
-				//['Direktorat Jenderal Perbendaharaan', 4],
-				//['Inspektorat Jenderal', 3],
-				//['Badan Kebijakan Fiskal', 2],
-				//['Direktorat Jenderal Kekayaan Negara', 1],
-				//['Badan Pendidikan dan Pelatihan Keuangan', 1]
+         
           data
         
           );
@@ -162,11 +157,6 @@
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
           chart.draw(datav, options);
         }
-
-
-
-
-
     };
 
     $scope.BukaForm = function () {
