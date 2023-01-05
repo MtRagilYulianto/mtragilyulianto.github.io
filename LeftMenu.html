@@ -1,3 +1,48 @@
+<style>
+    .sub-menu {
+     display: none;
+   }
+   .menu-item:hover .sub-menu {
+     display: block;
+   }
+ 
+ 
+   .container {
+     width: 100%;
+     height: auto;
+     display: flex; /* mengubah elemen menjadi sejajar */
+   }
+  
+   .left-menu {
+     width: 200px;
+     height: auto;
+     float: left;
+     background-color: blue; /* memberikan warna biru */
+   }
+ 
+ 
+   .left-menu ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+   }
+ 
+   .left-menu li {
+     margin: 10px 0;
+   }
+ 
+    .left-menu a {
+     text-decoration: none;
+     color: #fff; /* memberikan warna putih pada teks */
+     font-size: 16px;
+   }
+    .content {
+     width: calc(100% - 200px); /* mengambil 100% lebar dikurangi lebar left-menu */
+     height: auto;
+     float: right;
+     padding: 1px;
+   }
+ </style>
 <div class="left-menu">
     <ul>
       <li class="menu-item"><a href="/monitoring.html">Monitoring Manajemen Talenta</a></li>
