@@ -1,0 +1,45 @@
+<table ng-if="reload" border="1">
+    <tr>
+      <th>No.</th>
+      <th>Nama</th>
+      <th>Jabatan</th>
+      <th>Jenjang Jabatan</th>
+      <th>Eselon I</th>
+      <th>TMT Pensiun</th>
+      <th>Keterangan</th>
+    </tr>
+    <tr  ng-repeat="row in rowsUsulanTambahan">
+        <td>{{row.No}}</td>
+        <td>{{row.Nama}}</td>
+        <td>{{row.Jabatan}}</td>
+        <td>{{row.JenjangJabatan}}</td>
+        <td>{{row.EselonI}}</td>
+        <td>{{row.TMT_Pensiun}}</td>
+        <td>-{{CekData(row)?'Sudah Masuk Calon Talent':'Belum Masuk Calon Talent'}}
+          <div ng-if="!CekData(row)">
+            <br class="minimal">
+            <button ng-click="AddCalonTalent(row)">Masukkan ke Calon Talent</button>
+          </div>
+        </td>
+    </tr>
+</table>
+<br>
+<button ng-click="TambahForm()">Tambah Pegawai</button>
+<button ng-click="addAll()">Masukkan Semua Data Tambahan</button>
+<div ng-show="TampilForm">
+  <form>
+      <div>
+        <label for="nip">NIP:</label>
+        <input ng-model="Peg.NIP" type="text" id="nip" name="nip">
+      </div>
+      <div>
+        <label for="jabatan">Jabatan:</label>
+        <input ng-model="Peg.jabatan" type="text" id="jabatan" name="jabatan">
+      </div>
+      <div>
+        <label for="nilai_kinerja">Nilai Kinerja:</label>
+        <input ng-model="Peg.NilaiKinerja" type="text" id="nilai_kinerja" name="nilai_kinerja">
+      </div>
+      <input type="submit" value="Simpan" ng-click="Tambahkan(Peg)">
+    </form>
+</div>
