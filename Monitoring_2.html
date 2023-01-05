@@ -13,7 +13,7 @@
     <div id="piechart"></div>
 </div>
 <div ng-if="Kriteria === 'eselon-1'" >
-    <p>Rasio Berdasarkan Eselon I</p>
+    <p ng-init="CariRasioEselon1()">Rasio Berdasarkan Eselon I</p>
     <canvas id="myPieChart"></canvas>
 </div>
 <div ng-if="Kriteria === 'pendidikan'">

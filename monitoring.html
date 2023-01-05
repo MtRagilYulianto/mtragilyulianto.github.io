@@ -102,6 +102,28 @@
 
     };
 
+    $scope.CariRasioEselon1 = function () {
+      var esl1List = $scope.DataTalent.map(function(data) {
+        return data.Esl1;
+      });
+		
+		// Menggunakan fungsi filter untuk mencari nilai Esl1 yang unik
+		    var uniqueEsl1 = esl1List.filter(function(item, index, array) {
+          return array.indexOf(item) === index;
+      });
+		
+		// Menghitung jumlah Esl1 yang berbeda
+        var countEsl1 = {};
+        for (var i = 0; i < uniqueEsl1.length; i++) {
+          countEsl1[uniqueEsl1[i]] = 0;
+        }
+        for (var i = 0; i < esl1List.length; i++) {
+          countEsl1[esl1List[i]]++;
+        }
+
+        console.log(countEsl1);
+    };
+
     $scope.BukaForm = function () {
         //$scope.Form = true;
         $scope.TampilTab = true;
