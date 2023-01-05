@@ -254,6 +254,7 @@
       var insert = {
                       No: maxNo + 1,
                       Nama: dt[0].NamaLengkap,
+                      NIP: '5',
                       Jabatan: peg.jabatan,
                       JenjangJabatan: 'Eselon III & setara',
                       EselonI: dt[0].Esl1,
@@ -274,6 +275,7 @@
       var insert = {
                       No: maxNo + 1,
                       Nama: tamb.Nama,
+                      NIP: tamb.NIP,
                       Jabatan: tamb.Jabatan,
                       JenjangJabatan: tamb.JenjangJabatan,
                       EselonI: tamb.EselonI,
@@ -289,11 +291,11 @@
       //targetButton.click();
       //$scope.cadangan = angular.copy($scope.rowsUsulanTambahan);
       //$scope.rowsUsulanTambahan = [];
-      $scope.reload = false;
-      $timeout(function() {
+      //$scope.reload = false;
+      //$timeout(function() {
   // kode yang akan dijalankan setelah 2 detik
-            $scope.reload = true;
-      }, 5000);
+       //     $scope.reload = true;
+      //}, 5000);
       //console.log($scope.rows);
       //console.log($scope.rowsUsulanTambahan);
       

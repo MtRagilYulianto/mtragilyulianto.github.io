@@ -14,8 +14,8 @@
         <td>{{row.Jabatan}}</td>
         <td>{{row.JenjangJabatan}}</td>
         <td>{{row.EselonI}}</td>
-        <td ng-if="reload" ng-init="row.Keterangan = CekData(row)">{{row.TMT_Pensiun}}</td>
-        <td ng-if="reload" >{{row.Keterangan}}
+        <td>{{row.TMT_Pensiun}}</td>
+        <td>{{CekData(row)}}
           <div ng-if="true">
             <br class="minimal">
             <button ng-click="AddCalonTalent(row)">Masukkan ke Calon Talent</button>
