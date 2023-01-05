@@ -9,8 +9,8 @@
   <option value="usia">Usia</option>
 </select>
 <div ng-if="Kriteria === 'jenis-kelamin'">
-    <p>Rasio Berdasarkan Jenis Kelamin</p>
-    <canvas id="myPieChart"></canvas>
+    <p ng-init="CariRasioKelamin()">Rasio Berdasarkan Jenis Kelamin</p>
+    <div id="piechart"></div>
 </div>
 <div ng-if="Kriteria === 'eselon-1'" >
     <p>Rasio Berdasarkan Eselon I</p>
