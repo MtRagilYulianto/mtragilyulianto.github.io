@@ -159,6 +159,92 @@
         }
     };
 
+    
+    $scope.CariRasioUmur = function () {
+      var usiaTahunList = $scope.DataTalent.map(function(data) {
+        return data.UsiaTahun;
+      });
+		
+		// Menggunakan fungsi filter untuk mencari nilai Esl1 yang unik
+		  var uniqueUsiaTahun = usiaTahunList.filter(function(item, index, array) {
+          return array.indexOf(item) === index;
+      });
+		
+		// Menghitung jumlah Esl1 yang berbeda
+        var usiaArr = {};
+        for (var i = 0; i < uniqueUsiaTahun.length; i++) {
+          usiaArr[uniqueUsiaTahun[i]] = 0;
+        }
+        for (var i = 0; i < usiaTahunList.length; i++) {
+          usiaArr[esl1List[i]]++;
+        }
+
+        //console.log(countEsl1);
+
+        var data = [['Usia', 'Jumlah']];
+
+// Mengubah data jml menjadi format yang dibutuhkan
+        for (var key in usiaArr) {
+          data.push([key, usiaArr[key]]);
+        }
+
+        console.log(data);
+        console.log(Array.isArray(data));
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+        // Fungsi untuk menampilkan pie chart
+        function drawChart() {
+          // Membuat data array untuk pie chart
+          var datav = google.visualization.arrayToDataTable(
+         
+          data
+        
+          );
+          
+          // Mengatur option untuk pie chart
+          var options = {
+            title: 'Jumlah Esl1',
+            legend: {position: 'right'},
+            width: 600,
+            height: 400
+          };
+          
+          // Membuat dan menampilkan pie chart
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(datav, options);
+        }
+    };
+
+    
+    $scope.Testing = function () {
+        // Siapkan data
+        var data = [
+          [1, 2, 3, 2, 1],
+          [2, 3, 4, 3, 2],
+          [3, 4, 5, 4, 3],
+          [4, 5, 6, 5, 4]
+        ];
+
+        // Buat objek DataTable
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('number', 'X');
+        dataTable.addColumn('number', 'Y');
+
+        // Tambahkan data ke dalam DataTable
+        for (var i = 0; i < data.length; i++) {
+          dataTable.addRow(data[i]);
+        }
+
+        // Buat objek Histogram
+        var histogram = new google.visualization.Histogram(document.getElementById('histogram_div'));
+
+        // Tampilkan histogram
+        histogram.draw(dataTable);
+
+    };
+
     $scope.BukaForm = function () {
         //$scope.Form = true;
         $scope.TampilTab = true;
