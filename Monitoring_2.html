@@ -8,20 +8,19 @@
   <option value="pendidikan">Pendidikan</option>
   <option value="usia">Usia</option>
 </select>
-<div ng-if="Kriteria === 'jenis-kelamin'">
-    
+<div ng-if="Kriteria === 'jenis-kelamin'">    
     <div ng-init="CariRasioKelamin()" id="piechart"></div>
 </div>
 <div ng-if="Kriteria === 'eselon-1'" >
-    <p ng-init="CariRasioEselon1()">Rasio Berdasarkan Eselon I</p>
-    <div id="piechart"></div>
+    
+    <div ng-init="CariRasioEselon1()" id="piechart"></div>
 </div>
 <div ng-if="Kriteria === 'pendidikan'">
-    <p ng-init="CariRasioPendidikan()">Rasio Berdasarkan Pendidikan</p>
-    <div id="chartPendidikan"></div>
+    
+    <div ng-init="CariRasioPendidikan()" id="chartPendidikan"></div>
 </div>
 <div ng-if="Kriteria === 'usia'">
-    <p ng-init="CariRasioUmur()">Rasio Berdasarkan Usia</p>
-    <div id="histogram_div"></div>
+    
+    <div ng-init="CariRasioUmur()" id="histogram_div"></div>
 </div>
 </div>
