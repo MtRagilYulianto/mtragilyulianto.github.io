@@ -237,13 +237,14 @@
         for (var i = 0; i < data.length; i++) {
           dataTable.addRow(data[i]);
         }
+      
+        function drawChart() {
+            // Buat objek Histogram
+            var histogram = new google.visualization.Histogram(document.getElementById('histogram_div'));
 
-        // Buat objek Histogram
-        var histogram = new google.visualization.Histogram(document.getElementById('histogram_div'));
-
-        // Tampilkan histogram
-        histogram.draw(dataTable);
-
+            // Tampilkan histogram
+            histogram.draw(dataTable);
+        }
     };
 
     $scope.BukaForm = function () {
