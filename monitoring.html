@@ -181,7 +181,7 @@
 
         //console.log(countEsl1);
 
-        var data = [['Usia', 'Jumlah']];
+        var data = [['3', 0]];
 
 // Mengubah data jml menjadi format yang dibutuhkan
         for (var key in usiaArr) {
@@ -197,23 +197,18 @@
         // Fungsi untuk menampilkan pie chart
         function drawChart() {
           // Membuat data array untuk pie chart
-          var datav = google.visualization.arrayToDataTable(
-         
-          data
-        
-          );
-          
-          // Mengatur option untuk pie chart
-          var options = {
-            title: 'Jumlah Esl1',
-            legend: {position: 'right'},
-            width: 600,
-            height: 400
-          };
-          
-          // Membuat dan menampilkan pie chart
-          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-          chart.draw(datav, options);
+          var datav = new google.visualization.DataTable();
+            datav.addColumn('string', 'Usia');
+            datav.addColumn('number', 'jumlah');
+            datav.addRows(data);
+
+    // Buat objek ColumnChart
+            var chart = new google.visualization.ColumnChart(document.getElementById('histogram_div'));
+
+    // Tampilkan diagram batang
+            chart.draw(datav);
+
+
         }
     };
 
