@@ -215,8 +215,7 @@
       var jenjangPendidikanList = $scope.DataTalent.map(function(data) {
         return data.SingkatanJenjang;
       });
-		
-		// Menggunakan fungsi filter untuk mencari nilai Esl1 yang unik
+	
 		  var uniquejenjangPendidikan = jenjangPendidikanList.filter(function(item, index, array) {
           return array.indexOf(item) === index;
       });
@@ -226,23 +225,22 @@
       var pendidikanList = $scope.DataTalent.map(function(data) {
         return data.Pendidikan;
       });
-		
-		// Menggunakan fungsi filter untuk mencari nilai Esl1 yang unik
+
 		  var uniquePendidikan = pendidikanList.filter(function(item, index, array) {
           return array.indexOf(item) === index;
       });
 
       console.log("Pendidikan unik:"+ uniquePendidikan);
 
-      return;
+      
 
 		// Menghitung jumlah Esl1 yang berbeda
-        var usiaArr = {};
-        for (var i = 0; i < uniqueUsiaTahun.length; i++) {
-          usiaArr[uniqueUsiaTahun[i]] = 0;
+        var pddArr = {};
+        for (var i = 0; i < uniquePendidikan.length; i++) {
+          pddArr[uniquePendidikan[i]] = 0;
         }
-        for (var i = 0; i < usiaTahunList.length; i++) {
-          usiaArr[usiaTahunList[i]]++;
+        for (var i = 0; i < pendidikanList.length; i++) {
+          pddArr[pendidikanList[i]]++;
         }
 
         //console.log(countEsl1);
@@ -250,8 +248,8 @@
         var data = [];
 
 // Mengubah data jml menjadi format yang dibutuhkan
-        for (var key in usiaArr) {
-          data.push([key, usiaArr[key]]);
+        for (var key in pddArr) {
+          data.push([key, pddArr[key]]);
         }
 
         console.log(data);
@@ -264,12 +262,12 @@
         function drawChart() {
           // Membuat data array untuk pie chart
           var datav = new google.visualization.DataTable();
-            datav.addColumn('string', 'Usia');
+            datav.addColumn('string', 'Pendidikan');
             datav.addColumn('number', 'jumlah');
             datav.addRows(data);
 
     // Buat objek ColumnChart
-            var chart = new google.visualization.ColumnChart(document.getElementById('histogram_div'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartPendidikan'));
 
     // Tampilkan diagram batang
             chart.draw(datav);
