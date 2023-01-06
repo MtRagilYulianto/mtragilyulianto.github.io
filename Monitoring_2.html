@@ -17,7 +17,7 @@
     <div id="piechart"></div>
 </div>
 <div ng-if="Kriteria === 'pendidikan'">
-    <p>Rasio Berdasarkan Pendidikan</p>
+    <p ng-init="CariRasioPendidikan()">Rasio Berdasarkan Pendidikan</p>
     <canvas id="myPieChart"></canvas>
 </div>
 <div ng-if="Kriteria === 'usia'">
