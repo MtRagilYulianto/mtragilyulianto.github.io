@@ -226,7 +226,8 @@
           [3, 4, 5, 4, 3],
           [4, 5, 6, 5, 4]
         ];
-
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
         // Buat objek DataTable
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn('number', 'X');
