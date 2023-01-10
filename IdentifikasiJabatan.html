@@ -11,9 +11,9 @@
         $scope.PeriodePemetaan = "";
         $scope.LeftMenu = 'https://ragilrojo1986.github.io/LeftMenu.html';
         $scope.items = [
-        {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
-        {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
-        {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
+            {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
+            {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
+            {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
             {nomor: 4, namaJabatan: 'Direktur Tg', namaPejabat: '-', eselon1: 'DJP',eselon2: 'direktur adbasda', tmtPensiun: '-',  skj: 'tidak ditemukan', keterangan : 'Usulan Unit' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: 'Tidak Bisa Ditetapkan Karena SKJ tidak ditemukan'}
           ];
         
@@ -179,6 +179,7 @@
       <div ng-include="LeftMenu"></div>
 
       <div class="content">
+
         <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -278,6 +279,7 @@
                
                 <button ng-click="downloadExcel('TabelJabatanTarget')">Download Data</button>
         </div>
+        
       </div>
   </div>
 
