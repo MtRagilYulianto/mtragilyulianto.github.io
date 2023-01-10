@@ -95,6 +95,12 @@ $scope.tambah = function() {
           saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
         };
 
+        $scope.CariJabatan = function () {
+          $scope.Tampilan = {};
+          $scope.Tampilan.FormCariJabatan = true;
+
+        }
+
 
 
   }]);
@@ -236,7 +242,7 @@ $scope.tambah = function() {
                 </div>
             </form>
           </div>
-            <div ng-if="Tampilan.IdentifikasiJabatan">
+         <div ng-if="Tampilan.IdentifikasiJabatan">
               <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -328,7 +334,7 @@ $scope.tambah = function() {
               </table>
               
               <div ng-init="addRow()">
-                   <button onclick="window.location.href='FormCariJabatan.html'">Tambah Jabatan Target dari Referensi Jabatan</button>
+                   <button ng-click="CariJabatan()">Tambah Jabatan Target dari Referensi Jabatan</button>
                     
                      <button onclick="window.location.href='FormCariJabatanBebas.html'">Tambah Jabatan Target dari Refensi Jabatan (bebas)</button>
                      
@@ -337,8 +343,34 @@ $scope.tambah = function() {
                       <button ng-click="downloadExcel('TabelJabatanTarget')">Download Data</button>
               </div>
 
-            </div>
-        </div>
+          </div>
+          <div ng-if="Tampilan.FormCariJabatan">
+            <form >
+              <div>
+                <label for="scope">Ruang Lingkup:</label>
+                <select id="scope" name="scope">
+                  <option value="kementerian_keuangan">Kementerian Keuangan</option>
+                 
+                </select>
+              </div>
+              <br>
+              <div>
+                <label for="jenjang_jabatan">Jenjang Jabatan:</label>
+                <select id="jenjang_jabatan" name="jenjang_jabatan">
+                  <option value="eselon_ii">Eselon II</option>
+          
+                </select>
+              </div>
+              <br>
+              
+              <br>
+              <div>
+          
+                <button ng-click="Buka()">Cari</button>
+              </div>
+            </form>
+          </div>
+      </div>
   </div>
   </div>
 </html>
