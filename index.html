@@ -48,6 +48,55 @@ $scope.tambah = function() {
     $scope.item = {}; // Kosongkan form input setelah data ditambahkan
   };
 
+  $scope.reset = function(item, field) {
+            item[field] = '-';
+        };
+
+        $scope.setujui = function(item, field) {
+            item[field] = 'V';
+        };
+
+        $scope.tolak = function(item, field) {
+            item[field] = 'X';
+          };
+        
+        $scope.OpenModal = function () {
+            var modal = document.getElementById('uploadModal');
+            modal.style.display = "block";
+        };
+        
+        $scope.CloseModal = function () {
+            var modal = document.getElementById('uploadModal');
+            modal.style.display = "none";
+        };
+        
+        $scope.addRow = function () {
+            if (Jabatan !== null){
+                
+                $scope.item = {nomor: $scope.items[$scope.items.length - 1].nomor + 1, namaJabatan: Jabatan, namaPejabat: null, eselon1: null, tmtPensiun: null, eselon3: null, eselon4: null, skj: null, persetujuanAdminMT: null, persetujuanUnitMT: null, statusPenetapan: null}
+                $scope.items.push($scope.item);
+                $scope.item = {};
+                  
+                };
+            
+        };
+        
+        $scope.downloadExcel = function (item) {
+          // Mendapatkan tabel yang akan di-download
+          var table = document.getElementById(item);
+        
+          // Membuat objek workbook
+          var wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+        
+          // Mengkonversi workbook ke dalam format file excel
+          var excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+        
+          // Men-download file excel
+          saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
+        };
+
+
+
   }]);
 </script>
  <style>
@@ -103,6 +152,31 @@ $scope.tambah = function() {
 }
 
 
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideIn {
+  from {transform: translate(-50%, -100%);}
+  to {transform: translate(-50%, -50%);}
+}
 
 
 </style>
