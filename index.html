@@ -70,16 +70,16 @@ $scope.tambah = function() {
             modal.style.display = "none";
         };
         
-        $scope.addRow = function () {
-            if (Jabatan !== null){
+        //$scope.addRow = function () {
+        //    if (Jabatan !== null){
                 
-                $scope.item = {nomor: $scope.items[$scope.items.length - 1].nomor + 1, namaJabatan: Jabatan, namaPejabat: null, eselon1: null, tmtPensiun: null, eselon3: null, eselon4: null, skj: null, persetujuanAdminMT: null, persetujuanUnitMT: null, statusPenetapan: null}
-                $scope.items.push($scope.item);
-                $scope.item = {};
+        //        $scope.item = {nomor: $scope.items[$scope.items.length - 1].nomor + 1, namaJabatan: Jabatan, namaPejabat: null, eselon1: null, tmtPensiun: null, eselon3: null, eselon4: null, skj: null, persetujuanAdminMT: null, persetujuanUnitMT: null, statusPenetapan: null}
+        //        $scope.items.push($scope.item);
+        //        $scope.item = {};
                   
-                };
+        //        };
             
-        };
+        //};
         
         $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
