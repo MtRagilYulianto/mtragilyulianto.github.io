@@ -99,8 +99,13 @@ $scope.tambah = function() {
           $scope.Tampilan = {};
           $scope.Tampilan.FormCariJabatan = true;
 
-        }
+        };
 
+        $scope.Buka = function () {
+          $scope.Tampilan = {};
+          $scope.Tampilan.FormCariJabatanTabel = true;
+
+        };
 
 
   }]);
@@ -370,6 +375,36 @@ $scope.tambah = function() {
               </div>
             </form>
           </div>
+
+          <div ng-if="Tampilan.FormCariJabatanTabel">
+            <table border="1">
+              <tr>
+                <th>No.</th>
+                <th>Nama Jabatan</th>
+                <th>Nama/NIP Pejabat Sekarang</th>
+                <th>Jenjang Jabatan</th>
+                <th>Eselon I</th>
+                <th>Eselon II</th>
+                <th>Tahun Pensiun</th>
+                <th>TMT Pensiun</th>
+                <th>Aksi</th>
+              </tr>
+              <tr ng-repeat="item in items">
+                <td>{{item.nomor}}</td>
+                <td>{{item.namaJabatan}}</td>
+                <td>{{item.namaPejabat}} <br> {{item.nipPejabat}}</td>
+                <td>{{item.jenjangJabatan}}</td>
+                <td>{{item.eselon1}}</td>
+                <td>{{item.eselon2}}</td>
+                <td>{{item.tahunPensiun}}</td>
+                <td>{{item.tmtPensiun}}</td>
+                <td>
+                  <button ng-click="tambahkan(item)">Tambahkan Ke Data Jabatan Target</button>
+                </td>
+              </tr>
+          </table>
+          </div>
+
       </div>
   </div>
   </div>
