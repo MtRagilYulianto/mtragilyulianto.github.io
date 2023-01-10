@@ -13,6 +13,11 @@
         {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara' },
         {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu', JenjangTalent: 'Eselon III dan Jabatan Setara' }
       ];
+    $scope.itemsCariJabatan = [
+      {nomor: 1, namaJabatan: 'Direktur Utama', namaPejabat: 'Andri', nipPejabat: 'NIP.1234', jenjangJabatan: 'Eselon II', eselon1: 'DJP', eselon2: 'direktorat abc', tahunPensiun: '2025', tmtPensiun: '01 Januari 2025'},
+      {nomor: 2, namaJabatan: 'Manager HRD', namaPejabat: 'Joni', nipPejabat: 'NIP.777', jenjangJabatan: 'Eselon II', eselon1: 'Setjen', eselon2: 'Biro sdm', tahunPensiun: '2030', tmtPensiun: '01 Januari 2030'},
+      {nomor: 3, namaJabatan: 'direktur xxx', namaPejabat: null, nipPejabat: null, jenjangJabatan: 'Eselon II', eselon1: 'djbc', eselon2: 'direktorat abc', tahunPensiun: null, tmtPensiun: null}
+    ];
 
       $scope.itemJabTarget = [
             {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
@@ -389,7 +394,7 @@ $scope.tambah = function() {
                 <th>TMT Pensiun</th>
                 <th>Aksi</th>
               </tr>
-              <tr ng-repeat="item in items">
+              <tr ng-repeat="item in itemsCariJabatan">
                 <td>{{item.nomor}}</td>
                 <td>{{item.namaJabatan}}</td>
                 <td>{{item.namaPejabat}} <br> {{item.nipPejabat}}</td>
