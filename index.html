@@ -128,7 +128,8 @@ $scope.tambah = function() {
             $scope.item = {nomor: $scope.itemJabTarget[$scope.itemJabTarget.length - 1].nomor + 1, namaJabatan: item.namaJabatan};
             $scope.itemJabTarget.push($scope.item);
             $scope.item = {}; 
-
+            $scope.Tampilan = {};
+            $scope.Tampilan.FormCariJabatanTabel = true;
 
 
         };
