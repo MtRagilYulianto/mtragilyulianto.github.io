@@ -500,8 +500,8 @@ $scope.tambah = function() {
           <!-- ng-options="item.IDOrganisasi as customFilterModif(item) for item in distinctData | filter:customFilter:filterValue" -->
           <div ng-if="Tampilan.FormCariJabatanBebas">
             {{distinctData}}
-            <div ng-init="filterValue=1">
-              {{filterValue}}
+            <div >
+              
               <label for="scope">Ruang Lingkup:{{selectedOrganisasi}}</label> 
                <select id="scope" 
                name="scope" 
