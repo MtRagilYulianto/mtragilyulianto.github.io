@@ -27,8 +27,7 @@
           ];
     $scope.Tampilan = {};
     $scope.Tampilan.Utama = true;
-    $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;
-
+    
 
 
     $scope.pilih = function(item) {
@@ -141,6 +140,9 @@ $scope.tambah = function() {
               && i.NamaOrganisasi === item.NamaOrganisasi;
           }) === index;
         });
+      
+        $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;
+
 
         $scope.getIndukOrganisasi = function(item) {
           for (var i = 0; i < $scope.distinctData.length; i++) {
