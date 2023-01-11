@@ -142,11 +142,11 @@ $scope.tambah = function() {
               && i.NamaOrganisasi === item.NamaOrganisasi;
           }) === index;
         });
-       
+        $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;
         $scope.Inisiasi = function () {
-              $scope.filterValue =  1;
+              //$scope.filterValue =  1;
               //$scope.selectedOrganisasi = 1;
-              $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;
+             
         };
 
         $scope.getIndukOrganisasi = function(item) {
@@ -507,11 +507,11 @@ $scope.tambah = function() {
           </div>
 
           <!-- ng-options="item.IDOrganisasi as customFilterModif(item) for item in distinctData | filter:customFilter:filterValue" -->
-          <div ng-if="Tampilan.FormCariJabatanBebas">
+          <div ng-show="Tampilan.FormCariJabatanBebas">
             
             <div >
               
-              <label ng-init="Inisiasi()" for="scope">Ruang Lingkup:</label> 
+              <label ng-init="filterValue=1" for="scope">Ruang Lingkup:</label> 
                <select id="scope" 
                name="scope" 
                data-ng-model="selectedOrganisasi" 
