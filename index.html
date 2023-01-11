@@ -159,13 +159,13 @@ $scope.tambah = function() {
 
     $scope.customFilter = function(item) {
       //console.log(item);
-      //console.log($scope.filterValue);
+      console.log($scope.filterValue);
       if (item.IDOrganisasi == $scope.filterValue || item.IDIndukOrganisasi == $scope.filterValue) {
-           console.log(item);     
+           //console.log(item);     
            return true;
        }
        if (item.IDOrganisasi == $scope.getIndukOrganisasi($scope.filterValue)){
-          console.log(item); 
+          //console.log(item); 
           return true;
        }
        return false;
