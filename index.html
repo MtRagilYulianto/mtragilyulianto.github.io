@@ -196,6 +196,11 @@ $scope.tambah = function() {
       return false;
     };
 
+    $scope.changePilter = function () {
+      console.log($scope.filterValue +"filter value");
+      console.log($scope.selectedOrganisasi + "selected org");
+
+    }
 
 
 
@@ -508,7 +513,7 @@ $scope.tambah = function() {
                name="scope" 
                data-ng-model="selectedOrganisasi" 
                
-               ng-change="filterValue = selectedOrganisasi"
+               ng-change="changePilter()"
                
                ng-options="item.IDOrganisasi as customFilterModif(item) for item in distinctData | filter:customFilter:filterValue"
                >
