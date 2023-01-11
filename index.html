@@ -142,11 +142,11 @@ $scope.tambah = function() {
               && i.NamaOrganisasi === item.NamaOrganisasi;
           }) === index;
         });
-        $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;
+        
         $scope.Inisiasi = function () {
-              //$scope.filterValue =  1;
+              $scope.filterValue =  1;
               //$scope.selectedOrganisasi = 1;
-             
+              $scope.selectedOrganisasi = $scope.distinctData[0].IDOrganisasi;     
         };
 
         $scope.getIndukOrganisasi = function(item) {
@@ -511,7 +511,7 @@ $scope.tambah = function() {
             
             <div >
               
-              <label ng-init="filterValue=1" for="scope">{{selectedOrganisasi}}Ruang Lingkup:</label> 
+              <label ng-init="Inisiasi()" for="scope">{{selectedOrganisasi}}Ruang Lingkup:</label> 
                <select id="scope" 
                name="scope" 
                data-ng-model="selectedOrganisasi" 
