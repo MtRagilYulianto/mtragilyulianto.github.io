@@ -503,7 +503,7 @@ $scope.tambah = function() {
                
                ng-change="filterValue = selectedOrganisasi"
                
-               ng-options="item.IDOrganisasi as customFilterModif(item) for item in distinctData | filter:customFilter:filterValue"
+               ng-options="item.IDOrganisasi as item for item in distinctData | filter:customFilter:filterValue"
                >
                    <option ng-if="false" value="{{item.IDOrganisasi}}">{{item.NamaJabatan}}</option>
               </select>
