@@ -160,16 +160,13 @@
     $scope.Buka = function () {
     $scope.viewTable = true;
     };
-    $scope.tambahkan = function (item) {
-        console.log(item);
-        $window.location.href = 'https://ragilrojo1986.github.io/IdentifikasiJabatan.html?Jabatan=' + item.namaJabatan;
     
-    };
     
     $scope.Kirim = function (item) {
         console.log(item);
-        $window.location.href = 'https://ragilrojo1986.github.io/IdentifikasiJabatan.html?Jabatan=' + item.Hr_RefNamaJabatan.NamaJabatan;
-    
+        item.namaJabatan = item.Hr_RefNamaJabatan.NamaJabatan 
+        //$window.location.href = 'https://ragilrojo1986.github.io/IdentifikasiJabatan.html?Jabatan=' + item.Hr_RefNamaJabatan.NamaJabatan;
+        $scope.tambahkan(item);
     };
 
 
@@ -526,8 +523,8 @@
           <div  ng-if="Tampilan.FormCariJabatanBebas">
             
             <div  ng-controller="bebasController">
-              
-              <label ng-init="filterValue=1" for="scope">{{selectedOrganisasi}}Ruang Lingkup:{{filterValue}}</label> 
+              <div>
+              <label ng-init="filterValue=1" for="scope">Ruang Lingkup:</label> 
                <select id="scope" 
                name="scope" 
                data-ng-model="selectedOrganisasi" 
@@ -538,8 +535,23 @@
                >
                   
               </select>
-              
-              
+              </div>
+              <br>
+              <div>
+                
+                  <table border="1">
+                    <tr>
+                      <th>No.</th>
+                      <th>Nama Jabatan</th>
+                      <th>Aksi</th>
+                    </tr>
+                    <tr ng-repeat="jabatan in dataJabatan | filter:filterJab:selectedOrganisasi">
+                      <td>{{$index+1}}</td>
+                      <td>{{jabatan.Hr_RefNamaJabatan.NamaJabatan}}</td>
+                      <td><button ng-click="Kirim(jabatan)">Tambah</button></td>
+                    </tr>
+                  </table>
+              </div>
             </div>
           </div>
 
