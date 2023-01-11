@@ -74,18 +74,7 @@ $scope.tambah = function() {
             var modal = document.getElementById('uploadModal');
             modal.style.display = "none";
         };
-        
-        //$scope.addRow = function () {
-        //    if (Jabatan !== null){
                 
-        //        $scope.item = {nomor: $scope.items[$scope.items.length - 1].nomor + 1, namaJabatan: Jabatan, namaPejabat: null, eselon1: null, tmtPensiun: null, eselon3: null, eselon4: null, skj: null, persetujuanAdminMT: null, persetujuanUnitMT: null, statusPenetapan: null}
-        //        $scope.items.push($scope.item);
-        //        $scope.item = {};
-                  
-        //        };
-            
-        //};
-        
         $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
           var table = document.getElementById(item);
@@ -149,6 +138,46 @@ $scope.tambah = function() {
           }) === index;
         });
 
+        $scope.getIndukOrganisasi = function(item) {
+          for (var i = 0; i < $scope.distinctData.length; i++) {
+            if ($scope.distinctData[i].IDOrganisasi == item) {
+              return $scope.distinctData[i].IDIndukOrganisasi;
+            }
+          }
+        };
+
+        $scope.customFilter = function(item) {
+          if (item.IDOrganisasi == $scope.filterValue || item.IDIndukOrganisasi == $scope.filterValue) {
+            return true;
+          }
+          if (item.IDOrganisasi == $scope.getIndukOrganisasi($scope.filterValue)){
+              return true;
+          }
+          return false;
+        };
+        $scope.customFilterModif = function(item) {
+          if (item.IDOrganisasi == $scope.filterValue) {
+            return item.NamaOrganisasi + " (Induk Organisasi)";
+          }
+          if (item.IDOrganisasi == $scope.getIndukOrganisasi($scope.filterValue)){
+              return item.NamaOrganisasi + " (Induk Induk Organisasi)";
+          }
+          return item.NamaOrganisasi;
+        };
+        
+        $scope.init = function () {
+            console.log("test");
+            $('#scope option[value=""]').appendTo('#scope');
+        };
+        
+        $scope.Parent = function(item) {
+          if (item.IDOrganisasi == $scope.filterValue) {
+            return true;
+          }
+          return false;
+        };
+
+        $scope.filterJab = function(item) {
 
   }]);
 </script>
