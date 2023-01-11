@@ -112,6 +112,12 @@ $scope.tambah = function() {
 
         };
 
+        $scope.CariJabatanBebas = function () {
+          $scope.Tampilan = {};
+          $scope.Tampilan.FormCariJabatanBebas = true;
+
+        };
+
         $scope.tambahkan = function (item) {
             console.log(item);
      
@@ -378,7 +384,7 @@ $scope.tambah = function() {
               <div >
                    <button ng-click="CariJabatan()">Tambah Jabatan Target dari Referensi Jabatan</button>
                     
-                     <button onclick="window.location.href='FormCariJabatanBebas.html'">Tambah Jabatan Target dari Refensi Jabatan (bebas)</button>
+                     <button ng-click="CariJabatanBebas()">Tambah Jabatan Target dari Refensi Jabatan (bebas)</button>
                      
                      <button onclick="window.location.href='FormJabatanKosong.html'">Tambah Jabatan Target dari Pejabat yang Kosong</button>
                      
