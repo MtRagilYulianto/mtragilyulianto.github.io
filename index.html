@@ -153,13 +153,14 @@ $scope.tambah = function() {
         };
 
     $scope.customFilter = function(item) {
-      console.log(item);
+      
       if (item.IDOrganisasi == $scope.filterValue || item.IDIndukOrganisasi == $scope.filterValue) {
-        
-        return true;
+           console.log(item);     
+           return true;
        }
        if (item.IDOrganisasi == $scope.getIndukOrganisasi($scope.filterValue)){
-           return true;
+          console.log(item); 
+          return true;
        }
        return false;
     };
