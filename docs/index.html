@@ -197,7 +197,8 @@
                                 }
                             });
                             console.log($scope.data_ketiga);
-                            alasql('SELECT * INTO XLSX("filename.xlsx",{headers:true}) FROM ?',[$scope.data_ketiga]);
+                            alert('silakan buka filenya di download folder!');
+                            alasql('SELECT * INTO XLSX("Data.xlsx",{headers:true}) FROM ?',[$scope.data_ketiga]);
 
 
     
