@@ -197,7 +197,8 @@
                                 }
                             });
                             console.log($scope.data_ketiga);
-                            alasql('SELECT * INTO XLSX("filename.xlsx",{headers:true}) FROM ?',[$scope.data_ketiga]);
+                            alert('data akan di download, silahkan di cek!');
+                            alasql('SELECT * INTO XLSX("dataUntukHris.xlsx",{headers:true}) FROM ?',[$scope.data_ketiga]);
 
 
     
