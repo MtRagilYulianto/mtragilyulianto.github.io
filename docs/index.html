@@ -1,0 +1,240 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alasql@0.6.3/dist/alasql.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+        
+        <script>
+        var app = angular.module('myApp', []);
+
+
+        
+        app.directive('customOnChange', function() {
+            return {
+                restrict: 'A',
+                link: function (scope, element, attrs) {
+                    var onChangeHandler = scope.$eval(attrs.customOnChange);
+                    element.on('change', onChangeHandler);
+                    element.on('$destroy', function () {
+                        element.off();
+                    });
+		    }
+
+        };
+    });
+
+        app.controller('MainController', function ($scope) {
+            alasql.fn.formDate = function (dateString) {
+                                if (dateString == '<nil>') {
+                                    return '';
+                                };
+                                var bf = dateString.substring(0, 10);
+                                var date = new Date(Date.parse(bf));
+                                var day = date.getDate().toString().padStart(2, '0');
+                                var month = (date.getMonth() + 1).toString().padStart(2, '0');
+                                var year = date.getFullYear();
+                                //return dateString;
+                                return `${day} - ${month} - ${year}`;
+                        };
+            alasql.fn.cekNoPertek = function (st) {
+                if (st == undefined){
+                    st = '';
+                };
+                return st;
+            };
+            alasql.fn.modifyStatus = function (st) {
+                if (st == "Sdh di TTD - Pertek"){
+                    st = 'NP';
+                };
+                return st;
+            };
+
+         
+            $scope.loadFile2 = function () {
+                var file = document.getElementById("readfile").files[0];
+			    var reader = new FileReader();
+
+
+                console.log(file.name);
+                reader.onload = function(e){
+                    console.log(e);
+                    var data = e.target.result;
+                    console.log(data);
+                    var workbook = XLSX.read(data, {type: "binary"});
+                    workbook.SheetNames.forEach(function(sheetName) {
+        
+                        var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                        var json_object = JSON.stringify(XL_row_object);
+                        console.log(json_object);
+
+                    });
+        
+                };
+
+
+                reader.onerror = function(ex) {
+                        console.log(ex);
+                };
+
+
+                reader.readAsBinaryString(file);
+        
+            };
+        
+            $scope.readFile = function () {
+                        var fileInput = document.getElementById('fileInput');
+                        var file = fileInput.files[0];
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            var data = e.target.result;
+                            var workbook = XLSX.read(data, { type: 'binary' });
+                            var sheetName = workbook.SheetNames[0];
+                            var firstSheet = workbook.Sheets[sheetName];
+                            var XL_row_object = XLSX.utils.sheet_to_row_object_array(firstSheet);
+                            XL_row_object.splice(0, 2);
+
+                            var data_pertama = alasql('SELECT ROWNUM() as [ID] , * FROM ? WHERE __EMPTY !== ""', [XL_row_object]);
+//                            console.log(data_pertama);
+                            $scope.data_kedua = data_pertama.map(function(obj) {
+                                        return {                                             
+                                                    ID: obj.ID,
+                                                    instansi_kerja : obj.__EMPTY,
+                                                    unor_nama : obj.__EMPTY_1,
+                                                    unor_induk_nama : obj.__EMPTY_2,
+                                                    tgl_usulan : obj.__EMPTY_3,
+                                                    tgl_pengiriman_kelayanan : obj.__EMPTY_4,
+                                                    status_usulan : obj.__EMPTY_5,
+                                                    no_pertek : obj.__EMPTY_6,
+                                                    tgl_pertek : obj.__EMPTY_7,
+                                                    gelar_depan : obj.__EMPTY_8,
+                                                    gelar_belakang : obj.__EMPTY_9,
+                                                    nama : obj.__EMPTY_10,
+                                                    nip : obj.__EMPTY_11,
+                                                    tempat_lahir : obj.__EMPTY_12,
+                                                    tgl_lahir : obj.__EMPTY_13,
+                                                    pendidikan_terakhir : obj.__EMPTY_14,
+                                                    tahun_lulus : obj.__EMPTY_15,
+                                                    golongan_ruang_lama : obj.__EMPTY_16,
+                                                    tmt_pangkat_lama : obj.__EMPTY_17,
+                                                    pangkat_lama : obj.__EMPTY_18,
+                                                    masa_kerja_tahun_lama : obj.__EMPTY_19,
+                                                    masa_kerja_bulan_lama : obj.__EMPTY_20,
+                                                    gaji_pokok_lama : obj.__EMPTY_21,
+                                                    jabatan_lama : obj.__EMPTY_22,
+                                                    tmt_jabatan_lama : obj.__EMPTY_23,
+                                                    angka_kredit_lama : obj.__EMPTY_24,
+                                                    golongan_ruang_baru : obj.__EMPTY_25,
+                                                    tmt_pangkat_baru : obj.__EMPTY_26,
+                                                    pangkat_baru : obj.__EMPTY_27,
+                                                    masa_kerja_tahun_baru : obj.__EMPTY_28,
+                                                    masa_kerja_bulan_baru : obj.__EMPTY_29,
+                                                    gaji_pokok_baru : obj.__EMPTY_30,
+                                                    jabatan_baru : obj.__EMPTY_31,
+                                                    tmt_jabatan_baru : obj.__EMPTY_32,
+                                                    angka_kredit_baru : obj.__EMPTY_33,
+                                                    KPPN : obj.__EMPTY_34,
+                                                    jenis_prosedur : obj.__EMPTY_35,
+                                                    jenis_kp : obj.__EMPTY_36,
+                                                    no_sk : obj.__EMPTY_37,
+                                                    tgl_sk : obj.__EMPTY_38,
+                                                    no_urut : obj.__EMPTY_39,
+                                                    alasan_tolak : obj.__EMPTY_40,
+                                               };
+                                        });
+  //                          console.log($scope.data_kedua);
+                            $scope.data_ketiga = $scope.data_kedua.map(function(obj){
+                                return {
+                                    [1]: obj.ID,
+                                    [2]: "",
+                                    [3]: alasql.fn.formDate(obj.tgl_usulan),
+                                    [4]: "",
+                                    [5]: obj.no_pertek,
+                                    [6]: alasql.fn.formDate(obj.tgl_pertek),
+                                    [7]: "",
+                                    [8]: obj.no_sk,
+                                    [9]: alasql.fn.formDate(obj.tgl_sk),
+                                    [10]: alasql.fn.modifyStatus(obj.status_usulan),
+                                    [11]: "",
+                                    [12]: "",
+                                    [13]: obj.gelar_depan,
+                                    [14]: obj.gelar_belakang,
+                                    [15]: obj.nama,
+                                    [16]: obj.tempat_lahir,
+                                    [17]: alasql.fn.formDate(obj.tgl_lahir),
+                                    [18]: obj.nip,
+                                    [19]: obj.nip,
+                                    [20]: obj.pendidikan_terakhir,
+                                    [21]: obj.tahun_lulus,
+                                    [22]: obj.golongan_ruang_lama,
+                                    [23]: alasql.fn.formDate(obj.tmt_pangkat_lama),
+                                    [24]: obj.masa_kerja_tahun_lama,
+                                    [25]: obj.masa_kerja_bulan_lama,
+                                    [26]: obj.gaji_pokok_lama,
+                                    [27]: obj.jabatan_lama,
+                                    [28]: obj.angka_kredit_lama,
+                                    [29]: obj.golongan_ruang_baru,
+                                    [30]: alasql.fn.formDate(obj.tmt_pangkat_baru),
+                                    [31]: obj.masa_kerja_tahun_baru,
+                                    [32]: obj.masa_kerja_bulan_baru,
+                                    [33]: obj.gaji_pokok_baru,
+                                    [34]: obj.jabatan_baru,
+                                    [35]: obj.angka_kredit_baru,
+                                    [36]: obj.unor_nama,
+                                    [37]: obj.unor_induk_nama,
+                                    [38]: obj.KPPN,
+                                    [39]: "3005",
+                                    [40]: "Kementerian Keuangan",
+                                    [41]: "3005",
+                                    [42]: "Kementerian Keuangan",
+                                    [43]: obj.jenis_kp,
+                                    [44]: ""
+                                    
+
+                                }
+                            });
+                            console.log($scope.data_ketiga);
+                            alasql('SELECT * INTO XLSX("filename.xlsx",{headers:true}) FROM ?',[$scope.data_ketiga]);
+
+
+    
+                        };
+                        reader.readAsBinaryString(file);
+                        };
+
+        
+        });
+
+        
+        </script>
+
+    </head>
+
+    <div ng-app="myApp" class="box box-primary" ng-controller="MainController">
+        <div class="row">
+            <div class="box-body">
+                <div class="col-md-12">
+                    <div class="box-header with-border">
+                        <div class="box-title">Data harus berupa file xlsx, dan header hanya 1 baris</div>
+                    </div>
+                    <div>
+    
+                    </div>
+                    <!-- <input id="readfile" type="file" custom-on-change="loadFile2" /> -->
+                    <form>
+                        <input type="file" id="fileInput"> <br>
+                        <br>
+                        <button type="button" ng-click="readFile()">Read File</button>
+                    </form>
+                      
+    
+                </div>
+            </div>
+            <div id="output"></div>
+        </div>
+    </div>
+    
+</html>
