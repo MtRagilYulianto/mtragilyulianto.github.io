@@ -7,6 +7,7 @@
   <option value="eselon-1">Eselon I</option>
   <option value="pendidikan">Pendidikan</option>
   <option value="usia">Usia</option>
+  <option value="jenis-assessment">Jenis Assement</option>
 </select>
 <div ng-if="Kriteria === 'jenis-kelamin'">    
     <div ng-init="CariRasioKelamin()" id="piechart"></div>
@@ -22,5 +23,9 @@
 <div ng-if="Kriteria === 'usia'">
     
     <div ng-init="CariRasioUmur()" id="histogram_div"></div>
+</div>
+<div ng-if="Kriteria === 'jenis-assessment'">
+    
+    <div ng-init="CariRasioJenisAssessement()" id="piechart"></div>
 </div>
 </div>
