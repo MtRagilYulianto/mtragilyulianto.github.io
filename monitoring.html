@@ -9,7 +9,8 @@
   var app = angular.module('myApp', []);
 
     app.controller('indexController',  ['$scope', '$window', function($scope, $window) {
-     $scope.tabData = [
+    
+    $scope.tabData = [
       {
         title: "Data Jabatan Target",
         content: "/Monitoring_1.html"
@@ -23,8 +24,10 @@
         content: "/Monitoring_3.html"
       }
     ];
+    
     $scope.LeftMenu = '/LeftMenu.html';
-     $scope.downloadExcel = function (item) {
+    
+    $scope.downloadExcel = function (item) {
           // Mendapatkan tabel yang akan di-download
           var table = document.getElementById(item);
         
@@ -37,16 +40,19 @@
           // Men-download file excel
           saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "Data.xlsx");
         };
+    
     $scope.selectTab = function(index) {
       $scope.selectedTabIndex = index;
     };
     // Indeks tab yang sedang ditampilkan
     $scope.selectedTabIndex = 0;
+    
     $scope.Awal = true;
+    
     $scope.Form = false;
+    
     $scope.TampilTab =false;
     
-
     $scope.DataTalent = [
  {
    "$id": 1,
@@ -467,13 +473,14 @@
    "JenisAssessment": "9 Kompetensi"
  }
 ]
+    
     $scope.items = [
         {no: 1, periode: 'Target_Eselon II -- Ragil-- 01/01/2024--Kemenkeu'},
         {no: 2, periode: 'Target_Eselon II -- Ragil-- 01/01/2025--Kemenkeu'},
         {no: 3, periode: 'Target_Eselon II -- Ragil-- 01/01/2026--Kemenkeu'}
       ];
 
-     $scope.DataJabatanTargets = [
+    $scope.DataJabatanTargets = [
         {nomor: 1, namaJabatan: 'Direktur A', namaPejabat: '-', eselon1: 'DJA',eselon2: 'direktur xxx', tmtPensiun: '-', skj: '27', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: 'V', persetujuanUnitMT: '-', statusPenetapan: 'V'},
         {nomor: 2, namaJabatan: 'Direktur B', namaPejabat: 'Harianto', eselon1: 'DJBC',eselon2: 'direktur bbb', tmtPensiun: '1 Januari 2024',  skj: '35', keterangan : 'Usulan Unit' , persetujuanAdminMT: 'X', persetujuanUnitMT: 'V', statusPenetapan: 'X'},
         {nomor: 3, namaJabatan: 'Direktur T', namaPejabat: 'Prsetyo', eselon1: 'DJP', eselon2: 'direktur dasa',tmtPensiun: '1 Januari 2023',  skj: '9', keterangan : 'Usulan Admin MT' , persetujuanAdminMT: '-', persetujuanUnitMT: 'V', statusPenetapan: '-'},
@@ -486,6 +493,36 @@
       $scope.PeriodePemetaan = item.periode;
     };
     
+    $scope.CariRasioTalent = function () {
+      google.charts.load('current', {'packages':['corechart']});
+// Mendefinisikan fungsi callback yang akan dijalankan setelah library dimuat
+google.charts.setOnLoadCallback(drawChart);
+// Mendefinisikan fungsi untuk membuat data dan opsi chart
+function drawChart() {
+  // Membuat objek data table dari array data
+  var data = google.visualization.arrayToDataTable([
+    ['Produk', 'Q1', 'Q2', 'Q3', 'Q4'],
+    ['A', 10, 12, 15, 18],
+    ['B', 8, 9, 11, 13],
+    ['C', 7, 6, 8, 10]
+  ]);
+  // Membuat objek opsi chart dengan mengatur beberapa properti
+      var options = {
+        title: 'Penjualan Produk per Kuartal',
+        is3D: true // Mengaktifkan efek 3-d pada chart
+      };
+  // Membuat objek chart dengan menentukan elemen HTML yang akan menampilkannya
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  // Menggambar chart dengan data dan opsi yang telah ditentukan
+      chart.draw(data, options);
+    }
+
+
+
+
+
+    } 
+
     $scope.CariRasioKelamin = function () {
       // Menggunakan fungsi filter untuk mencari data dengan KodeKelamin 'L'
           var lakiLaki = $scope.DataTalent.filter(function(data) {
@@ -634,9 +671,6 @@
         }
     };
 
-
-
-
     $scope.CariRasioUmur = function () {
       var usiaTahunList = $scope.DataTalent.map(function(data) {
         return data.UsiaTahun;
@@ -754,11 +788,11 @@
         }
     };
 
-
     $scope.BukaForm = function () {
         //$scope.Form = true;
         $scope.TampilTab = true;
     };
+    
     $scope.BuatChart = function () {
            var ctx = document.getElementById('myPieChart').getContext('2d');
     var myPieChart = new Chart(ctx, {
