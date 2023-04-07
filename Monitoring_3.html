@@ -3,13 +3,10 @@
 <br>
 <label for="rasio-berdasarkan">Rasio Berdasarkan:</label>
 <select ng-model="Kriteria" id="rasio-berdasarkan">
-  <option value="jenis-kelamin">Jenis Kelamin</option>
-  <option value="eselon-1">Eselon I</option>
-  <option value="pendidikan">Pendidikan</option>
-  <option value="usia">Usia</option>
-  <option value="jenis-assessment">Jenis Assement</option>
+  <option value="Unit">Unit</option>
+
 </select>
-<div ng-if="Kriteria === 'jenis-kelamin'">    
+<div ng-if="Kriteria === 'Unit'">    
     
     <div ng-init="CariRasioTalent()"  id="chart_div" style="width:600px; height:400px;"></div>
 </div>

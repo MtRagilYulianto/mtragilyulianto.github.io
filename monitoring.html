@@ -494,27 +494,27 @@
     };
     
     $scope.CariRasioTalent = function () {
-      google.charts.load('current', {'packages':['corechart']});
-// Mendefinisikan fungsi callback yang akan dijalankan setelah library dimuat
-google.charts.setOnLoadCallback(drawChart);
-// Mendefinisikan fungsi untuk membuat data dan opsi chart
-function drawChart() {
-  // Membuat objek data table dari array data
-  var data = google.visualization.arrayToDataTable([
-    ['Produk', 'Q1', 'Q2', 'Q3', 'Q4'],
-    ['A', 10, 12, 15, 18],
-    ['B', 8, 9, 11, 13],
-    ['C', 7, 6, 8, 10]
-  ]);
-  // Membuat objek opsi chart dengan mengatur beberapa properti
-      var options = {
-        title: 'Penjualan Produk per Kuartal',
-        is3D: true // Mengaktifkan efek 3-d pada chart
-      };
-  // Membuat objek chart dengan menentukan elemen HTML yang akan menampilkannya
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  // Menggambar chart dengan data dan opsi yang telah ditentukan
-      chart.draw(data, options);
+        google.charts.load('current', {'packages':['corechart']});
+        // Mendefinisikan fungsi callback yang akan dijalankan setelah library dimuat
+        google.charts.setOnLoadCallback(drawChart);
+        // Mendefinisikan fungsi untuk membuat data dan opsi chart
+        function drawChart() {
+          // Membuat objek data table dari array data
+          var data = google.visualization.arrayToDataTable([
+            ['Produk', 'Target Jabatan', 'Talent'],
+            ['DJP', 2, 12],
+            ['DJA', 3, 9],
+            ['SETJEN', 1, 6]
+          ]);
+          // Membuat objek opsi chart dengan mengatur beberapa properti
+              var options = {
+                title: 'Rasio Talent Per Unit Eselon I',
+                is3D: true // Mengaktifkan efek 3-d pada chart
+              };
+          // Membuat objek chart dengan menentukan elemen HTML yang akan menampilkannya
+              var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+          // Menggambar chart dengan data dan opsi yang telah ditentukan
+              chart.draw(data, options);
     }
 
 
